@@ -1,0 +1,23 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+ul{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+html,body{
+	width: 100%;
+	height: 100%;
+}
+.index{
+	width: 80%;
+	max-width: 1000px;
+	min-width: 480px;
+	height: 100%;
+	margin: 0 auto;
+	position: relative;
+	border: solid 1px red;
+}
