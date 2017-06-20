@@ -223,6 +223,34 @@ fieldset div img{
 		top: 30%;
 	}
 }
-#sign{
-	/*display: none;*/
+.tijiao2,.tijiao3{
+	display: none;
+}
+.person,.lock{
+	width: 100%;
+	height: 7%;
+	padding: 0 5% 0 8%;
+	line-height: 40px;
+	border-bottom: solid 1px gainsboro;
+}
+.person span,.lock span{
+	display: inline-block;
+	float: right;
+}
+.nicheng{
+	width: 40%;
+	height: 25px;
+	margin: 0 auto;
+	border: solid 0.1px black;
+}
+#backs{
+	width: 70%;
+	height: 40px;
+	text-align: center;
+	font-size: 2em;
+	position: relative;
+	left: 12%;
+	top: 2px;
+	border-radius: 30px;
+	background-color: rgb(254,148,148);
 }
