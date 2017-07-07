@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<title>团购首页</title>
+
+	<meta name="format-detection" content="telephone=no"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta http-equiv="Access-Control-Allow-Origin" content="*"/>
+
+	<link rel="stylesheet" type="text/css" href="css/Groupon.css"/>
+
+</head>
+<body>
+
+<!-- 主  挂载点  视口-->
+<div id="app">
+	<component v-bind:is="view"></component>
+</div>
+
+
+<!-- 模板一 首页-->
+<script type="text/template" id="home">
+<div class="home-page">
+
+    <div class="top">
+    	<img src="img/home_logo.png">
+        
+        <!-- 到 搜索界面 -->
+    	<a href="#seach/">
+	    	<div class="seach">
+	    		<input type="" name="" placeholder="" value="输入商家、分类、关键字" disabled="disabled">
+	    	</div>
+    	</a>
+    	
+    </div>
+    
+    <!-- //广告 轮播  跳到商品详情-->
+    <div class="banner_bg">
+	    <ul class="banner">
+	        <!-- <a href="#"> -->
+				<li v-for="itm in banner.items" v-on:click="clickId(itm.inid)">
+				    <a href="#product/{{itm.inid}}">
+						<img v-bind:src="'http://juhuituan.boguyuan.com/juhuituan'+itm.img">
+					</a>
+				</li>
+		    <!-- </a> -->
+		</ul>
+	</div>
+    
+    <!-- 跳到所有商品 分类-->
+	<ul class="ad">
+		<li v-for="itm in ad.items" v-bind:data="itm.id"  v-on:click="classify_list_id(2,itm.id)">
+		    <a href="#list/id/{{itm.id}}">
+				<img v-bind:src="'http://juhuituan.boguyuan.com/juhuituan'+itm.img">
+				<p>{{itm.ti}}</p>
+			</a>
+		</li>
+	</ul>
+    
+
+    <!-- 可到所有商品  或商品详情 -->
+	<ul class="list"  >
+
+	    <!-- 跳到所有商品-->
+	    <a href="#/list/all" v-on:click="all_list_id(1)">
+	    	<div>热门
+		        <span>全部团购</span>
+		    </div>
+	    </a>
+	    
+	    <!-- //商品列表  跳到商品详情-->
+		<li v-for="itm in list.items" v-on:click="clickIndex(itm.id)">
+		    <a href="#/product/{{itm.id}}">
+				<img v-bind:src="'http://juhuituan.boguyuan.com/juhuituan'+itm.img">
+			</a>
+		</li>
+	</ul>
+
+	<div class="footer bottom">底部导航</div>
+
+</div>
+</script>
+
+
+<!-- // 模板二 所有商品列表分类-->
+<script type="text/template" id="list">
+<div class="list-page">
+	    <div>商品列表</div>
+
+	    <a href="#seach">
+	    	<div>搜索<input type="" name=""></div>
+	    </a>
+	    
+		<ul class="all">
+
+		    <a href="#product">
+				<li v-for="itm in adlist.items" v-on:click="click_adlist(itm.id)">
+					<!-- <span>{{itm.ti}}</span> -->
+					<img v-bind:src="'http://juhuituan.boguyuan.com/juhuituan'+itm.img">
+				</li>
+			</a>
+		</ul>
+</div>
+</script>
+
+<!-- // 模板三 商品详情-->
+<script type="text/template" id="product">
+<div class="product-page">
+	    <div class="product_top">商品详情
+        
+        <!-- 返回上一层 -->
+	    <a href="" id="back">
+	    	<img src="img/nav_back.png" class="back" >
+
+		    <img src="img/nav_icon.png" class="logo" >
+	    </a>
+        
+
+        <!-- 收藏 -->
+        <img src="img/uncollect.png" class="coll_before">
+        <img src="img/collect.png" class="coll_after">
+
+	    <!-- 分享 -->
+	    <img src="img/share.png" class="share">
+
+	    </div>
+
+
+	    <ul class="details">
+	    	<li v-for="itm in details">
+				<img v-bind:src="'http://juhuituan.boguyuan.com/juhuituan'+itm.img">
+				<p>{{itm.con}}</p>
+                
+                <!-- 到商品 图文详情 -->
+
+                <div class="image_text">              	             
+					<a href="#image_text" v-on:click="clickUrl(itm.weburl)">
+					商品图文详情
+					<p>{{itm.weburl}}</p>
+					<!-- <a href="{{itm.lnk}}">链接</a> -->
+					</a>
+				</div>
+   
+                <!-- 到订单 -->
+                <a href="#order_form">
+                	<div>订购</div>
+                </a>
+		        
+
+	    		
+	    	</li>
+	    </ul>
+</div>
+</script>
+
+
+<!-- // 模板四   图文详情-->
+<script type="text/template" id="image_text">
+	<div class="image_text-page">
+		<div class="top_title">图文详情</div>
+         
+        <!-- 图文详情展示 -->
+		<ul class="img_txt">
+			<li v-for="itm in img_txt">
+				<iframe v-bind:src="itm.links" scrolling="auto" ></iframe>
+			</li>
+		</ul>
+        
+        <!-- 到订单 -->
+        <a href="#order_form"><div class="img_txt_order">到订单</div></a>
+	</div>
+</script>
+
+
+<!-- // 模板五 从图文商品详情 来到  抢购订单-->
+<script type="text/template" id="order_form">
+	<div class="order_form-page">
+	    
+		<div>订单</div>
+	</div>
+</script>
+
+
+<!-- 模板六 搜索 界面-->
+<script type="text/template" id="seach">
+	<div class="seach-page">
+	    <div class="top">
+
+	        <!-- 返回按钮 回首页 -->
+	        <a href="" id="back">
+		        <img src="img/nav_back.png" class="back" >
+
+		    	<img src="img/icon_back.png" >
+	    	</a>
+	        
+	        
+	    	<!-- 输入框 -->
+	    	<div class="seach">
+	    		<input type="" name="" placeholder="输入商家、分类、关键字" value="" id="seach_input">
+	    	</div>
+	    	
+            <!-- 到 搜索结果 -->
+            <a href="#seach_result/" v-on:click="click_seach()">
+	    	    <div class="seach_result">搜索</div>
+	    	</a>
+    	
+        </div>
+        
+        
+
+	</div>
+</script>
+
+
+<!-- 模板七 搜索 结果 -->
+<script type="text/template" id="seach_result">
+	<div class="seach_result-page">
+		<div class="result">搜索结果</div>
+		<div class="now_bg">
+		    <span class="now">当前搜索</span>
+			<li v-for="itm in keyword">
+				<span v-bind:src="">{{itm.txt}}</span>
+			</li>
+		</div>
+
+        
+        <div class="seach_data">
+			<li v-for="itm in seach_data.items" v-on:click="click_seach_Index(itm.id)">
+			    <a href="#/product/{{itm.id}}">
+					<img v-bind:src="'http://juhuituan.boguyuan.com/juhuituan'+itm.img">
+				</a>
+			</li>
+		</div>
+
+	</div>
+</script>
+
+
+<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript" src="js/Groupon.js"></script>
+
+
+
+</body>
+</html>

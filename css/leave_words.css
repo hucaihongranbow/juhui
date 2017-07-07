@@ -1,0 +1,190 @@
+*{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	text-decoration: none;
+	outline: none;
+}
+
+body{
+	/*min-width: 340px;*/
+	/*overflow: hidden;*/
+	max-width: 768px;
+	background-color: #eee;
+	margin: 0 auto;
+	box-sizing: border-box;
+	/*border: 1px red solid;*/
+	height: 100%;
+}
+
+/*顶部*/
+/*文字*/
+.top{
+	height: 60px;
+	line-height: 60px;
+
+	text-align: center;
+	font-size: 26px;
+
+	color: #fff;
+	background-color: rgb(254,148,148);
+
+	position: relative;
+	padding: 0;
+
+	/*border: 1px red solid;*/
+}
+
+.top .back{
+	position: absolute;
+	left: 10px;
+	top: 15px;
+	height: 30px;
+}
+
+/*logo*/
+.top .img-responsive{
+	position: absolute;
+	top: 10px;
+	left: 35px;
+	height: 40px;
+	/*cursor: pointer;*/
+}
+
+
+
+
+
+/*内容 content*/
+.content_bg{
+	padding: 22px;
+
+}
+
+.content_bg .title{
+	padding-left: 20px;
+	margin-bottom: 12px;
+	font-size: 15px;
+	font-weight: bold;
+	color: #000;
+}
+
+
+.content_bg textarea{
+	height: 430px;
+	width: 100%;
+	background-color: #fff;
+	resize: none;
+
+	/*text-indent: 1em;*/
+}
+.content_bg button{
+	width: 100%;
+	text-align: center;
+	margin-top: 10px;
+
+	outline: none;
+	border: none;
+	background-color: transparent;
+
+	height: 40px;
+	border: 1px #ccc solid;
+
+	font-size: 22px;
+}
+
+
+
+/*弹框*/
+
+.fixed_bg{
+
+	width: 100%;
+	height: 100%;
+
+	background-color: transparent;
+	z-index: 1;
+	position: absolute;
+	left: 0;
+	top: 0;
+    
+    display: none;
+}
+.fixed{
+	position: fixed;
+
+	width: 100px;
+	height: 100px;
+
+	background-color: red;
+
+	top: 75%;
+	left: 40%;
+
+
+}
+
+
+
+
+
+
+/*媒体变化*/
+
+
+@media screen and (max-width:680px)
+{   
+
+}
+
+@media screen and (max-width:420px)
+{
+	
+    
+    /*内容信息*/
+    .top .back
+	{
+		height: 22px;
+		top: 19px;
+	}
+
+	.top .logo{
+		height: 30px;
+		top: 15px;
+		left: 24px;
+
+	}
+
+    
+}
+
+@media screen and (max-width:380px)
+{  
+	.top {
+		padding-left: 18px;
+	}
+	.top .back
+	{
+		/*height: 20px;*/
+		/*top: 20px;*/
+	}
+
+	.top .logo{
+		/*height: 28px;*/
+		/*top: 16px;*/
+		/*left: 24px;*/
+
+	}
+
+}
+
+@media screen and (max-width:300px)
+{  
+
+	.top .logo{
+		display: none;
+	}
+}
+
+
+

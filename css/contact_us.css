@@ -1,0 +1,139 @@
+*{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	text-decoration: none;
+	outline: none;
+}
+
+body{
+	/*min-width: 340px;*/
+	/*overflow: hidden;*/
+	max-width: 768px;
+	background-color: #eee;
+	margin: 0 auto;
+	box-sizing: border-box;
+	/*border: 1px red solid;*/
+}
+
+/*顶部*/
+/*文字*/
+.top{
+	height: 60px;
+	line-height: 60px;
+
+	text-align: center;
+	font-size: 26px;
+
+	color: #fff;
+	background-color: rgb(254,148,148);
+
+	position: relative;
+	padding: 0;
+
+	/*border: 1px red solid;*/
+}
+
+.top .back{
+	position: absolute;
+	left: 10px;
+	top: 15px;
+	height: 30px;
+}
+
+/*logo*/
+.top .img-responsive{
+	position: absolute;
+	top: 10px;
+	left: 35px;
+	height: 40px;
+	/*cursor: pointer;*/
+}
+
+
+
+
+
+/*内容 content*/
+.content{
+	width: 100%;
+	padding-left: 14%;
+}
+.content div,a{
+	/*text-align: center;*/
+	width: 100%;
+
+	margin-top: 40px;
+	font-size: 15px;
+	color: #000;
+	font-weight: bold;
+}
+
+.last{
+	padding-left: 8%;
+	font-size: 14px;
+	color: #000;
+
+
+	margin-top: 60px;
+}
+
+/*媒体变化*/
+
+
+@media screen and (max-width:680px)
+{   
+
+}
+
+@media screen and (max-width:480px)
+{
+	
+    
+    /*内容信息*/
+    .top .back
+	{
+		height: 22px;
+		top: 19px;
+	}
+
+	.top .logo{
+		height: 30px;
+		top: 15px;
+		left: 24px;
+
+	}
+
+    
+}
+
+@media screen and (max-width:380px)
+{  
+	.top {
+		padding-left: 18px;
+	}
+	.top .back
+	{
+		height: 20px;
+		top: 20px;
+	}
+
+	.top .logo{
+		height: 28px;
+		top: 16px;
+		left: 24px;
+
+	}
+
+}
+
+@media screen and (max-width:300px)
+{  
+
+	.top .logo{
+		display: none;
+	}
+}
+
+
+
