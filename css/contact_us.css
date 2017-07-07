@@ -13,7 +13,11 @@ body{
 	background-color: #eee;
 	margin: 0 auto;
 	box-sizing: border-box;
+<<<<<<< HEAD
+	/*border: 1px red solid;*/
+=======
 	border: 1px red solid;
+>>>>>>> origin/master
 }
 
 /*顶部*/
@@ -55,9 +59,35 @@ body{
 
 
 /*内容 content*/
+<<<<<<< HEAD
+.content{
+	width: 100%;
+	padding-left: 14%;
+}
+.content div,a{
+	/*text-align: center;*/
+	width: 100%;
+
+	margin-top: 40px;
+	font-size: 15px;
+	color: #000;
+	font-weight: bold;
+}
+
+.last{
+	padding-left: 8%;
+	font-size: 14px;
+	color: #000;
+
+
+	margin-top: 60px;
+}
+
+=======
 
 
 
+>>>>>>> origin/master
 /*媒体变化*/
 
 

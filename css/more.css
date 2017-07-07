@@ -83,7 +83,11 @@ body{
 	font-weight: bold;
 }
 
+<<<<<<< HEAD
+.content a li span,.content li span{
+=======
 .content a li span{
+>>>>>>> origin/master
 	position: absolute;
 	right: 0;
 	top: 8px;
@@ -92,7 +96,11 @@ body{
 	color: #666;
 }
 
+<<<<<<< HEAD
+.content li span{
+=======
 .content a:nth-child(3) span{
+>>>>>>> origin/master
 	
 	font-size: 14px;
 	font-weight: bold;
@@ -199,4 +207,15 @@ body{
     {
 		margin-left: 36%;
 	}
+<<<<<<< HEAD
+}
+
+@media  screen  and (width: 320px) 
+{
+   .bottom_nav li span
+    {
+		margin-left: 31%;
+	}
+=======
+>>>>>>> origin/master
 }

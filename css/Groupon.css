@@ -1,0 +1,381 @@
+*{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	box-sizing: border-box;
+}
+html{
+	height: 100%;
+}
+
+body{
+	height: 100%;
+	max-width: 768px;
+	/*border: 1px red solid;*/
+	margin: 0 auto;
+	box-sizing: border-box;
+}
+
+a{
+	text-decoration: none;
+	color:#000; 
+}
+
+img{
+	display: block;
+}
+
+/*top*/
+.top{
+	border: 1px red solid;
+	background-color: red;
+
+	height: 40px;
+	background-color: rgb(254,148,148);
+}
+
+.top img{
+	float: left;
+	width: 24%;
+	margin: 6px;
+	margin-left: 14px;
+}
+
+.top .seach{
+	float: right;
+	/*height: 100%;*/
+	margin-top: 2%;
+	margin-right: 8px;
+
+	color:#fff;
+
+	border-radius: 16px;
+
+	border: 1px red solid;
+	background-color: red;
+
+	padding-left: 30px;
+
+	background-image: url(../img/icon_search.png);
+	background-repeat: no-repeat;
+
+	background-size: 24px 24px; 
+	background-position: 6px 1px;
+}
+
+.top .seach input{
+	color:#fff;
+	border: none;
+	outline: none;
+	background-color: transparent;
+	line-height: 22px;
+	width:100%; 
+}
+
+@media screen and (min-width: 425px)
+{
+	.top img{
+		width: 100px;
+
+		margin-top: 4px;
+	}
+
+	.top .seach{
+		margin-top: 6px;
+	} 
+}
+
+
+/*banner 轮播*/
+
+.banner_bg{
+	width: 100%;
+	overflow: hidden;
+
+	position: relative;
+	border: 1px red solid;
+}
+.banner_bg .banner{
+	width: 200%;
+	/*position: absolute;*/
+	/*top: 0;*/
+	left: 0;
+	position: relative;
+}
+
+.banner li{
+	width: 50%;
+	/*float: left;*/
+}
+
+.banner li img{
+	width: 100%;
+	/*float: left;*/
+}
+
+
+/*八大ad*/
+.ad{
+	margin-top: 10px;
+	width: 100%;
+
+	/*border: 1px red solid;*/
+}
+.ad li{
+	float: left;
+	width: 25%;
+	/*display: block;*/
+	text-align: center;
+	/*border: 1px red solid;*/
+	
+
+}
+
+.ad li a{
+	float: left;
+	width: 100%;
+	display: block;
+	text-align: center;
+}
+
+.ad li a img{
+	width: 50%;
+	position: relative;
+	left: 25%;
+}
+
+
+/*商品列表*/
+.list,#list{
+	width: 100%;
+	margin-top: 44%;
+	border: 1px red solid;
+
+}
+
+.list div {
+	position: relative;
+}
+
+.list div span{
+	/*text-align: right;*/
+	position: absolute;
+	right: 0;
+}
+
+.list li,#list li {
+	margin-bottom: 10px;
+	border: 1px red solid;
+}
+
+.list img,#list img{
+	width: 40%;
+}
+
+
+@media screen and (min-width: 768px)
+{
+    .list,#list{
+		/*width: 100%;*/
+		margin-top: 36%;
+    }
+
+
+}
+
+/*底部*/
+.footer{
+	position: fixed;
+	bottom: 0;
+	color: red;
+}
+
+
+
+/*第二模板 商品列表*/
+.all li {
+	margin-bottom: 10px;
+	border: 1px red solid;
+}
+
+.all img{
+	width: 40%;
+}
+
+
+
+/*第三模板 商品详情 去往 商品图文详情*/
+
+.product_top{
+	position: relative;
+	text-align: center;
+
+	height: 40px;
+	line-height: 40px;
+	color: #fff;
+	font-size: 16px;
+
+	background-color: rgb(254,148,148);
+}
+
+.product_top .back{
+	position: absolute;
+	left: 6px;
+	top: 9px;
+	/*margin: 0;*/
+
+	width: 14px;
+}
+
+.product_top  .logo{
+	width: 80px;
+
+	position: absolute;
+	left: 24px;
+	top: 6px;
+
+	/*float: left;*/
+}
+
+
+.product_top .coll_before{
+	top: 7px;
+	position: absolute;
+
+	right: 72px;
+
+	width: 26px;
+}
+
+
+.product_top  .coll_after{
+	top: 7px;
+	position: absolute;
+	right: 38px;
+
+	width: 26px;
+}
+
+
+.product_top .share{
+	top: 7px;
+	position: absolute;
+	right: 4px;
+
+	width: 26px;
+}
+
+
+.details{
+	width: 100%;
+}
+
+.details img{
+	width: 100%;
+}
+
+.details li .image_text,.details li .image_text a{
+	color: red;
+}
+
+/*模板四  图文详情*/
+#app{
+	height: 100%;
+}
+
+.image_text-page,.img_txt,.img_txt li{
+	width: 100%;
+	height: 100%;
+}
+
+
+
+.img_txt li iframe{
+	width: 100%;
+	height: 200%;
+
+	border: none;
+	overflow: hidden;
+
+	
+}
+
+/*顶部*/
+.top_title{
+	position: fixed;
+	top:0;
+	right: 0;
+
+	color: red;
+}
+
+/*底部*/
+.img_txt_order{
+	position: fixed;
+	bottom: 0;
+	right: 0;
+
+	color: red;
+
+	font-size: 16px;
+}
+
+/*模板六 搜索开始界面*/
+.seach-page .top{
+	position: relative;
+}
+
+.seach-page .top img{
+	width: 30px;
+	margin-left: 24px;
+	margin-top: 5px;
+}
+
+.seach-page .top .back{
+	position: absolute;
+	left: 4px;
+	top: 9px;
+	margin: 0;
+
+	width: 14px;
+
+
+}
+
+.seach-page .seach {
+	position: absolute;
+	left: 20%;
+	width: 65%;
+}
+
+.seach-page .seach_result{
+	position: absolute;
+	right: 4px;
+	line-height: 40px;
+	color: #fff;
+}
+
+/*模板七 搜索结果*/
+.now_bg{
+	/*border: 1px red solid;*/
+	position: relative;
+	/*margin-bottom: 40px;*/
+	height: 30px;
+	line-height: 28px;
+}
+
+.now_bg  .now{
+	position: absolute;
+	left: 0;
+}
+
+.now_bg li {
+	float: left;
+	margin-left: 80px;
+}
+
+.seach_data{
+	/*margin-top: 20px;*/
+	/*border: 1px red solid;*/
+
+}
