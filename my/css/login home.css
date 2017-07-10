@@ -1,0 +1,228 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+ul{
+   list-style: none;
+}
+a{
+	text-decoration: none;
+	color: #000;
+}
+body{
+	width: 100%;
+	height: 100%;
+	background: #EEEEEE;
+}
+/*页面开始*/
+.title{
+	width: 100%;
+	height: 3em;
+	float: left;
+	background: #FD9395;
+
+}
+
+.title .my{
+	width: 100%;
+	float: left;
+	text-align: center;
+	line-height: 2.3em;
+	color: #fff;
+	font-size: 1.3em;
+}
+.user_top_bg{
+	width: 100%;
+	height: 10em;
+	float: left;
+	background: url(../img/user_top_bg.jpg);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+@media screen and (min-width:768px){
+.user_top_bg { 
+			     height: 12em;
+			}
+.user_top_bg .login_reg_icon{
+			position: absolute;
+			top: 6em;
+		   }
+
+		}
+.user_top_bg .login_reg_icon{
+	width: 40%;
+	height: 3em;
+	position: absolute;
+	top: 5em;
+	left: 30%;
+}
+.user_top_bg .login_reg_icon img{
+	width: 100%;
+	height: 3em;
+	margin:0 auto;
+}
+@media screen and (min-width:768px){
+.user_top_bg .login_reg_icon{
+			position: absolute;
+			top: 6em;
+		   }
+		}
+.order{
+	width: 100%;
+	height: 5.5em;
+	float: left;
+	background: #fff;
+	border-bottom: 1px solid #BEBEBE;
+}	
+@media screen and (min-width:768px){
+.order{
+		height: 8em;
+	   }   
+}
+.order ul{
+	margin: 2% auto;
+}
+.order ul li{
+	width: 33%;
+	height: 80%;
+	float: left;
+}
+.order ul li .pay{
+	width: 100%;
+	height: 2.5em;
+	float: left;
+}	
+.order ul li .pay img{
+	height: 2.5em;
+
+}
+
+.order ul li.xian{
+	border-right: 1px solid #BEBEBE;
+}
+.order ul li p{
+	width: 100%;
+	float: left;
+	font-size: 1.1em;
+	text-align: center; 
+}
+.forn{
+	width: 100%;
+	height: 50%;
+	float: left;
+}
+
+.forn ul li{
+	width: 100%;
+	height: 3.5em;
+	float: left;
+	border-bottom: 1px solid #BEBEBE;
+}
+@media screen and (min-width:768px){
+.forn ul li{
+		height: 5em;
+	   }
+}
+.forn ul li .shouca{
+	width: 20%;
+	float: left;
+	height: 3.5em;
+}
+.forn ul li .shouca img{
+	height: 1.5em;
+	position: relative;
+	top: 30%;
+}
+@media screen and (min-width:768px){
+.forn ul li .shouca img{
+	height: 2em;
+	position: relative;
+	top: 45%;
+	   }   
+}
+.forn ul li p{
+	width:40%;
+	float: left;
+	font-size: 1.2em;
+	line-height: 3.2em
+}
+@media screen and (min-width:768px){
+.forn ul li p{
+	width:40%;
+	float: left;
+	font-size: 1.5em;
+	line-height: 3.2em
+	   }   
+}
+.forn ul li span{
+	width: 20%;
+	height: 3em;
+	float: right;
+}
+
+.forn ul li span img{
+	height: 1.2em;
+	position: relative;
+	top: 30%;
+}
+@media screen and (min-width:768px){
+.forn ul li span img{
+	height: 1.5em;
+	position: relative;
+	top: 45%;
+	   }   
+}
+
+
+.bottom_nav{
+	width: 100%;
+	height: 9%;
+	position: fixed;
+	bottom: 0;
+	background-color:#fff;
+}
+.bottom_nav ul{
+	height: 100%;
+}
+.bottom_nav li{
+	width: 20%;
+	height: 100%;
+	float: left;
+}
+.bottom_nav li img,.bottom_nav li span{
+	display: block;
+	width: auto;
+	margin: 0 auto;
+}
+.container{
+	padding: 0;
+	margin: 0;
+}
+.bottom_nav li img{
+	width: 40%;
+	height: 50%;
+	margin-top: 10%;
+}
+.bottom_nav li span{
+	margin-left: 33%;
+	font-size: 0.8em;
+	color: #000000;
+}
+
+.bottom_nav li:active{
+
+border-bottom: 2px solid rgb(254,148,148);
+}
+.bottom_nav li:visited{
+	border-bottom: 2px solid rgb(254,148,148);
+}
+@media only screen and (min-width: 768px){
+	.bottom_nav li img{
+	margin-top: 10%;
+}
+.bottom_nav li span{
+	margin-left: 33%;
+	font-size: 2em;
+	color: #000000;
+ }
+}

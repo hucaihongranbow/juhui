@@ -1,0 +1,307 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+a{
+	text-decoration: none;
+}
+ul{
+	list-style: none;
+}
+
+body{
+	width: 100%;
+	height: 100%;
+	background-color:#f5f5f5;
+}
+html,body{height: 100%;}
+ /*个人设置头部开始*/ 
+.header{
+    width: 100%;
+	height: 3em;
+	z-index: 1000;
+	display: inline-block;
+    color:white;
+    background: #FD9395;
+   
+}
+
+.header .right{
+	width: 8%;
+	height: 3em;
+    float: left;
+}
+.header .right img{
+	height: 35px;
+	position: relative;
+	top: 10%
+
+}
+.header .nav_icon{
+	width: 20%;
+	height: 3em;
+	float: left;
+}
+.header .nav_icon img{
+	width: 100%;
+	height: 45px;
+	position: relative;
+	top: 5%
+}
+.header .my{
+	width: 50%;
+	float: left;
+	text-align: center;
+	line-height: 50px;
+	font-size: 1.3em;
+	color: #fff;
+}
+/*个人设置头部结束*/
+
+/*内容开始*/
+.forn{
+	width: 100%;
+	height: 50%;
+	float: left;
+}
+
+.forn ul li{
+	width: 100%;
+	height: 3.5em;
+	float: left;
+}
+@media screen and (min-width:768px){
+.forn ul li{
+		height: 5em;
+	   }
+}
+.forn ul li .shouca{
+	width: 15%;
+	float: left;
+	height: 3.5em;
+}
+.forn ul li .shouca img{
+	height: 1.5em;
+	position: relative;
+	top: 30%;
+}
+@media screen and (min-width:768px){
+.forn ul li .shouca img{
+	height: 2em;
+	position: relative;
+	top: 45%;
+	   }   
+}
+.forn ul li p{
+	width:12%;
+	float: left;
+	font-size: 1.2em;
+	line-height: 3em
+}
+@media screen and (min-width:768px){
+.forn ul li p{
+	float: left;
+	font-size: 1.5em;
+	line-height: 3.2em
+	   }   
+}
+.forn ul li span{
+	width: 60%;
+	height: 3em;
+	float: left;
+	position: relative;
+	top: 20%;
+	margin-left: 3%;
+}
+.forn ul li span input{
+	width: 100%;
+	height: 60%;
+	font-size: 1.1rem;
+}
+.forn ul li span .no{
+	width: 100%;
+	height: 60%;
+	line-height: 2em;
+	text-align: left;
+    background: red;
+	font-size: 1.1rem;
+}
+/*内容结束*/
+
+/*更新按钮开始*/
+.quit{
+	position: fixed;
+	bottom:20%;
+    width: 100%;
+    float: left;
+ }
+.quit .login{
+    width: 90%;
+    margin: 0.5em auto;
+    background: #F56177;
+    border-radius: 5px;
+    text-align: center;
+    color: #fff;
+    font-size: 1.2em;
+    line-height: 2em;
+ }
+  @media screen and (min-width:768px){
+   .quit{
+	position: fixed;
+	bottom:40%;
+    width: 100%;
+    float: left;
+  }  
+}
+/*更新按钮结束*/
+
+
+
+    
+   
+/*---背景遮罩---*/
+.clearfix:after{
+    content: "";
+    display: block;
+    clear: both;
+    height: 0;
+    visibility: hidden;
+}
+    
+.blackoverlay{   
+    position: absolute;
+    background: #666;
+    overflow: hidden;
+    top: 0px;
+    left: 0px;
+    z-index: 1001;
+    -moz-opacity: 0.5;
+    opacity: .50;
+    filter: alpha(opacity=50);
+}
+/*---弹窗主体---*/
+.whitecontent{ 
+    width: 25%;
+    height: 15%; 
+    border-radius: 5px;                              
+    position: absolute;
+    z-index: 1002;
+    background: #000;
+    display: none; 
+    -moz-opacity: 0.5;
+    opacity: .50;
+    filter: alpha(opacity=50);           
+}   
+.spinner {
+	width: 30%;
+    height: 30%; 
+	margin: 35% auto;
+	position: relative;
+} 
+.container1 > div,
+.container2 > div,
+.container3 > div {
+	width: 8px;
+	height: 8px;
+	background-color: #fff;
+	border-radius: 50%;
+	position: absolute;
+	-webkit-animation: bouncedelay 1.2s infinite ease-in-out;
+	animation: bouncedelay 1.2s infinite ease-in-out;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+.spinner .spinner-container {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+.container2 {
+	-webkit-transform: rotateZ(45deg);
+	transform: rotateZ(45deg);
+}
+.container3 {
+	-webkit-transform: rotateZ(90deg);
+	transform: rotateZ(90deg);
+}
+.circle1 {
+	top: 0;
+	left: 0;
+}
+.circle2 {
+	top: 0;
+	right: 0;
+}
+.circle3 {
+	right: 0;
+	bottom: 0;
+}
+.circle4 {
+	left: 0;
+	bottom: 0;
+}
+.container2 .circle1 {
+	-webkit-animation-delay: -1.1s;
+	animation-delay: -1.1s;
+}
+.container3 .circle1 {
+	-webkit-animation-delay: -1.0s;
+	animation-delay: -1.0s;
+}
+.container1 .circle2 {
+	-webkit-animation-delay: -0.9s;
+	animation-delay: -0.9s;
+}
+.container2 .circle2 {
+	-webkit-animation-delay: -0.8s;
+	animation-delay: -0.8s;
+}
+.container3 .circle2 {
+	-webkit-animation-delay: -0.7s;
+	animation-delay: -0.7s;
+}
+.container1 .circle3 {
+	-webkit-animation-delay: -0.6s;
+	animation-delay: -0.6s;
+}
+.container2 .circle3 {
+	-webkit-animation-delay: -0.5s;
+	animation-delay: -0.5s;
+}
+.container3 .circle3 {
+	-webkit-animation-delay: -0.4s;
+	animation-delay: -0.4s;
+}
+.container1 .circle4 {
+	-webkit-animation-delay: -0.3s;
+	animation-delay: -0.3s;
+}
+.container2 .circle4 {
+	-webkit-animation-delay: -0.2s;
+	animation-delay: -0.2s;
+}
+.container3 .circle4 {
+	-webkit-animation-delay: -0.1s;
+	animation-delay: -0.1s;
+}
+@-webkit-keyframes bouncedelay {
+	0%, 80%, 100% {
+		-webkit-transform: scale(0.0)
+	}
+	40% {
+		-webkit-transform: scale(1.0)
+	}
+}
+@keyframes bouncedelay {
+	0%, 80%, 100% {
+		transform: scale(0.0);
+		-webkit-transform: scale(0.0);
+	}
+	40% {
+		transform: scale(1.0);
+		-webkit-transform: scale(1.0);
+	}
+/*蒙版结束*/
+
+
+

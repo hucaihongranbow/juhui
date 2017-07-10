@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+ 
+    <link rel='stylesheet' href='../css/style.css'>
+    <link rel='stylesheet' href='../css/swiper.min.css'>  
+	  
+    <script src="../js/jquery.1.11.1.js"></script>
+    <script src="../js/swiper.min.js"></script>  
+    <script src="../js/idangerous.swiper.min.js"></script> 
+    <script type="text/javascript" src="../js/no payment.js"></script>
+	
+    <title>收藏</title>
+</head>
+<body>
+    <!-- 头部开始 -->
+     <div class="header">
+        <div class="right">
+            <img src="../img/nav_back.png">
+        </div>
+
+        <div class="nav_icon">
+            <img src="../img/nav_icon.png">
+        </div>
+
+        <div class="my">收藏</div>
+    </div>
+   <!-- 头部结束 -->
+
+
+    <!-- 切换栏开始 -->
+    <header class="favor-header-bar">
+        <ul class="tabs">
+            <li class="default"><a href="javascript:void(0);" id="btn1" hidefocus="true">团购收藏</a></li>
+            <li><a href="javascript:void(0);" id="btn2" hidefocus="true">商家收藏</a></li>
+        </ul>
+    </header>
+    <!-- 切换栏结束 -->
+  
+    <!--  刷新开始 -->
+     <div class="drag_to_refresh"></div>
+     <div class="refresh">正在刷新中...</div>
+     <!-- 刷新结束 -->
+
+
+   <!-- 内容开始 -->
+   <div class="swiper-container favor-list drag">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="../img/pic1-favor.png">
+                <p>暂无数据</p>
+            </div>
+
+            <div class="swiper-slide margin19">
+                <img src="../img/pic1-favor.png">
+                <p>暂无数据......</p>
+            </div>          
+        </div>
+   </div>
+<!--    内容结束 -->
+
+   <script type="text/javascript">
+    var mySwiper = new Swiper('.swiper-container',{
+        autoHeight: true,
+        onSlideChangeStart: function(){
+          $(".tabs .default").removeClass('default');
+          $(".tabs li").eq(mySwiper.activeIndex).addClass('default');
+        }
+    });
+     $(".tabs li").on('click',function(e){
+        e.preventDefault();
+        $(".tabs .default").removeClass('default');
+        $(this).addClass('default');
+        mySwiper.swipeTo($(this).index());
+      });
+      $(".tabs li").click(function(e){
+        e.preventDefault();
+      });
+
+    </script>
+</body>
+</html>
+

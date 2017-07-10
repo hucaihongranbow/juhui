@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录首页</title>
+     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+     <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/login home.css">
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>  
+    <script type="text/javascript" src="js/login bottom.js"></script>
+</head>
+<body>
+   <div class="title">
+   	 <div class="my">我的</div>
+   </div>
+
+   <div class="user_top_bg">
+   	   <div class="login_reg_icon">
+   	   	 <img src="img/login_reg_icon.png">
+   	   </div>
+   </div>
+
+   <div class="order">
+   	<ul>
+   		<li class="xian">
+   			<div class="pay" align="center">
+   				<img src="img/wait_pay.png" >
+   				
+   			</div>
+   			<p>待支付</p>
+   		</li>
+
+   		<li class="xian">
+   			<div class="pay" align="center">
+   				<img src="img/wait_use.png"  >
+   				
+   			</div>
+   			<p>待使用</p>
+   		</li>
+
+   		<li>
+   			<div class="pay" align="center">
+   				<img src="img/wait_comment.png" >
+   			</div>
+   			<p>待评价</p>
+   		</li>
+   	</ul>
+   </div>
+
+   
+   <div class="forn">
+      <ul>
+         <li class="go">
+            <div class="shouca" align="center" >
+               <img src="img/order.png">
+            </div>
+            <p>全部订单</p>
+            <span align="center">
+               <img src="img/arrow_icon.png">
+            </span>
+         </li>
+
+         <li class="go">
+            <div class="shouca" align="center">
+               <img src="img/favorite.png">
+            </div>
+            <p>收藏</p>
+            <span align="center">
+               <img src="img/arrow_icon.png">
+            </span>
+         </li>
+
+      </ul>
+   </div>
+
+
+
+   <div class="bottom_nav container">
+         <ul>
+            <a href="javascript:;">
+               <li class="naver">
+                  <img src="img/tg_normal.png" class="img-responsive navImg"/>
+                  <span>团购</span>
+               </li>
+            </a>
+
+            <a href="javascript:;">
+               <li class="naver">
+                  <img src="img/rm_normal.png" class="img-responsive navImg"/>
+                  <span>热卖</span>
+               </li>
+            </a>
+
+            <a href="javascript:;">
+               <li class="naver">
+                  <img src="img/merchant_icon_normal.png" class="img-responsive navImg"/>
+                  <span>逛街</span>
+               </li>
+            </a>
+            <a href="javascript:;">
+               <li class="naver">
+                  <img src="img/user_normal.png" class="img-responsive navImg"/>
+                  <span>我的</span>
+               </li>
+            </a>
+            <a href="javascript:;">
+               <li class="naver">
+                  <img src="img/more_normal.png" class="img-responsive navImg"/>
+                  <span>更多</span>
+               </li>
+            </a>
+         </ul>
+      </div>
+
+</body>
+</html>
+<script type="text/javascript">
+   $(function  () {
+      $(".pay").click(function(){
+         window.location.href="content/login.html"
+      })
+
+       $(".go").click(function(){
+         window.location.href="content/login.html"
+      })
+
+        $(".login_reg_icon").click(function(){
+         window.location.href="content/login.html"
+      })
+        // $(".naver span").click(function(){
+        //   $(this).css("color","#FF0000")
+        // }) 
+        // $(".naver span").mouseleave(function(){
+        //   $(this).css("color","#EEEEEE")
+        // }) 
+   })
+</script>
