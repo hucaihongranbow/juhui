@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>待支付</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/shoucang.css">
+    <link rel="stylesheet" type="text/css" href="../css/no payment.css">
+    <script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../js/qiehuan.js"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="right">
+            <img src="../img/nav_back.png">
+        </div>
+
+        <div class="nav_icon">
+            <img src="../img/nav_icon.png">
+        </div>
+
+        <div class="my">收藏</div>
+    </div>
+
+    <div class="collect">
+        <ul id="btn">
+            <li class="active">团购收藏</li>
+            <li>卖家收藏</li>
+        </ul>
+    </div>
+
+
+    <div class="drag_to_refresh" id="drag_to_refresh"></div>
+    <div class="refresh" id="refresh">正在刷新中...</div>
+
+    <div id="tab">
+        <div class="drag">
+            <img src="../img/order_null.png">
+            <p>暂无数据...</p>
+        </div>
+
+        <div class="drag" style="display: none;">
+            <img src="../img/order_null.png">
+            <p>暂无数据1</p>
+        </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+// window.onload=function(){
+//             var btn=document.getElementById("btn").getElementsByTagName('li');
+//             var tab=document.getElementById("tab").getElementsByTagName('div');
+//             for (var i=0;i<btn.length;i++) {
+//                 btn[i].index = i;
+//                 btn[i].onclick=function  () {
+//                 if (this.className=='active') {
+//                      return;
+//                     } //做优化
+//                     for (var i=0; i<btn.length; i++) {
+//                         btn[i].className='';
+//                         tab[i].style.display='none';
+//                     }
+//                     this.className='active';
+//                     tab[this.index].style.display='block';
+//                 }
+//             }
+//     }
+</script>

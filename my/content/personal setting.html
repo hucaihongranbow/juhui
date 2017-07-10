@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人设置</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<link rel="stylesheet" type="text/css" href="../css/personal setting.css">
+	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+    
+  
+</head>
+<body>
+	<!-- 个人设置头部开始 -->
+     <div class="header">
+     	<a href="account management.html">
+	        <div class="right">
+	            <img src="../img/nav_back.png">
+	        </div>
+        </a>
+
+        <div class="nav_icon">
+            <img src="../img/nav_icon.png">
+        </div>
+
+        <div class="my">个人设置</div>
+    </div>
+    <!-- 个人设置头部结束 -->
+
+    <!-- 内容开始 -->
+    <div class="forn">
+      <ul>
+
+           <li class="go">
+              <div class="shouca" align="center" >
+                 <img src="../img/un.png">
+              </div>
+              <p>账号</p>
+              <span align="center">
+               <div class="no"></div>
+              </span>
+           </li>
+
+
+    
+           <li class="go">
+              <div class="shouca" align="center">
+                 <img src="../img/uname.png">
+              </div>
+              <p>昵称</p>
+              <span >
+                 <input type="text" name=""> 
+              </span>
+           </li>
+
+
+      </ul>
+    </div>
+    <!-- 内容结束 -->
+
+    <!-- 更新按钮开始 -->
+    <div class="quit">
+        <div class="login" id="openWindow">更新</div>
+    </div>
+    <!--  更新按钮结束 -->
+    
+    <!-- 蒙版开始 -->
+    <div class="blackoverlay"></div>
+    <div class="whitecontent " id="onePop">
+            <div class="spinner">
+			<div class="spinner-container container1">
+				<div class="circle1"></div>
+				<div class="circle2"></div>
+				<div class="circle3"></div>
+				<div class="circle4"></div>
+			</div>
+			<div class="spinner-container container2">
+				<div class="circle1"></div>
+				<div class="circle2"></div>
+				<div class="circle3"></div>
+				<div class="circle4"></div>
+			</div>
+			<div class="spinner-container container3">
+				<div class="circle1"></div>
+				<div class="circle2"></div>
+				<div class="circle3"></div>
+				<div class="circle4"></div>
+			</div>
+		</div>
+    </div>
+    <!-- 蒙版结束 -->
+</body>
+</html>
+<script type="text/javascript">
+ $(function(){
+            /*--- 打开弹窗---*/
+            $("#openWindow").click(function(){
+                popwindow("onePop");
+            })
+            /*---窗体变化时---*/
+            $(window).resize(function(){
+                 if($(".whitecontent").is(":visible")){
+                        popwindow(".whitecontent:visible");
+                     }
+            });            
+        })
+
+        /*---弹窗函数---*/
+        function popwindow(obj) {
+            var bw = $("body").width();
+            var bh = $("body").height();
+            var ww=window.innerWidth;
+            var wh=window.innerHeight;
+            var cw = $("#"+obj).width();
+            var ch = $("#"+obj).height();
+            var left = (Math.abs(ww - cw) / 2);
+            var top = (Math.abs(wh - ch) / 2);
+            $(".blackoverlay").css("width", bw).css("height", bh).show();
+            $("#"+obj).css("top", top).css("left", left).show();
+            var timer=null
+            timer=setTimeout(function(){
+				window.location.href="account management.html"
+			},2000)
+        }
+
+        
+          
+
+  
+       
+    </script>
+
