@@ -1,20 +1,174 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="{CHARSET}">
-		<title>聚惠首页</title>
+		<meta charset="UTF-8">
+		<title>我的</title>
 		<meta name="format-detection" content="telephone=no"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximun-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
 		<meta name="apple-mobile-web-app-capable" content="yes"/>
 		<meta name="apple-touch-fullscreen" content="yes"/>
 		<meta http-equiv="Access-Control-Allow-Origin" content="*"/>
 		
+		<link rel="stylesheet" href="css/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="css/index.css"/>
-		<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="css/bottom_nav.css"/>
+		
+		<script src="jquery/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/bottom.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 	<body>
-		<div class="index">
+		
+		<div class="h_content container" id="app">
+			
+			
+			<!--模板开始-->	
+            <!--挂载点-->
+			<component v-bind:is="view"></component>
+			<!--模板结束-->								
+	       	
 			
 		</div>
+	    
+	    
+	    <!--首页模板开始-->
+	    <script type="text/template" id="tpl_home">
+	    	<section class="home-page">
+	    		
+	    		<!--头部开始-->
+			<div class="h_top container">
+				<img src="img/home_logo.png" class="img-responsive" id="ads"/>					
+				<a href="#search"">
+				<div class="h_input" >
+					
+					<img src="img/icon_search.png"/>
+					&nbsp;&nbsp;输入商家、分类、关键字
+					
+				</div>
+				</a>
+			</div>
+			<!--头部结束-->
+	    		
+	        <div class="wh">
+	        	<ul class="lunbo types">
+	        		<li v-for="item in lunbo" class="lb_li" @click="">
+	        			<a href="#product/{{item.id}}">
+	        				<img src="{{item.url}}" alt="" class="img-responsive"/>
+	        			</a>
+	        		</li>
+	        	</ul>
+	        </div><!--轮播-->
+	        
+	        <!--类目列表开始-->
+	        <div class="list">
+	        	<ul class="clearfix types">
+	        		<li v-for="item in types" style="float: left;" @click="clicks(item.Ids)">
+	        			<a href="#list/type/{{item.id}}?pid={{item.Ids}}"><!--加载类型模板-->
+	        				<img src="{{item.url}}" alt=""/>
+	        				<span>{{item.title}}</span>
+	        			</a>
+	        		</li>
+	        	</ul>
+	        </div>
+	        <!--类目列表技术-->
+	        
+	        <!--热门团购开始-->
+	        <div class="hot_sell">
+	        	<div class="head">
+	        		<span>热门团购</span><span>全部团购></span>
+	        		
+	        		<!--团购列表-->
+	        		<ul class="clearfix product">
+	        			<li v-for="item in product" v-on:click="click_P(item.Id)">
+	        				<a href="#product/{{item.id}}">
+	        				<img src="{{item.url}}"/>
+	        				<div class="title">{{item.title}}</div>
+	        				<div class="content">{{item.content}}</div>
+	        				<div class="price">{{item.price}}</div>
+	        				<div class="num">{{item.num}}</div>
+	        				</a>
+	        			</li>
+	        		</ul>
+	        	</div>
+	        </div>
+	        <!--热门团购结束-->
+	        <!--导航开始-->
+			<div class="bottom_nav container">
+			<ul>
+				<a href="javascript:;"><li class="naver"><img src="img/tg_select.png" class="img-responsive navImg"/><span>团购</span></li></a>
+				<a href="javascript:;"><li class="naver"><img src="img/rm_normal.png" class="img-responsive navImg"/><span>热卖</span></li></a>
+				<a href="javascript:;"><li class="naver"><img src="img/merchant_icon_normal.png" class="img-responsive navImg"/><span>逛街</span></li></a>
+				<a href="javascript:;"><li class="naver"><img src="img/user_normal.png" class="img-responsive navImg"/><span>我的</span></li></a>
+				<a href="javascript:;"><li class="naver"><img src="img/more_normal.png" class="img-responsive navImg"/><span>更多</span></li></a>
+			</ul>
+		</div>
+		<!--导航结束-->
+	        
+	        </section>
+	    </script>	    
+	    <!--首页模板结束-->
+	    
+	    <!--分类模板-->
+	    <script type="text/template" id="tpl_list">
+	        <section class="list-page">
+	        	<div class="active">
+	        		<img src="img/nav_back.png" class="img-responsive" id="ad"/>
+	        		<img src="img/nav_icon.png" class="img-responsive" id="adx"/>	        		
+	        		<span class="title">{{types.title}}</span>
+	        		<img src="img/icon_search.png" class="img-responsive" id="add"/>
+	        	</div>
+	        	
+	        	<div class="type">
+	        		<div class="T_left">{{}}</div>
+	        		<div class="T_right">{{}}</div>
+	        	</div>
+	        	
+	        	<li v-for="item in goods" class="affixs">
+	        		<img src="{{item.img}}"/>
+	        		<div>{{item.title}}</div>
+	        		<p>{{item.con}}</p>
+	        		<span>{{item.fpri}}</span>/
+	        		<span>{{item.pri}}</span>
+	        		<span>{{item.num}}</span>人
+	        	</li>
+		         
+	        </section>
+        </script>
+        
+        <!--详情模板-->
+        <script type="text/template" id="pro_list">
+	<section class="list-page">
+		<div class="active">
+	        		<img src="img/nav_back.png" class="img-responsive" id="ad"/>
+	        		<img src="img/nav_icon.png" class="img-responsive" id="adx"/>	        		
+	        		<span class="title">{{types.title}}</span>
+	        		<img src="img/uncollect.png" class="img-responsive" id="adds"/>
+	        		<img src="img/share.png" class="img-responsive" id="add"/>	        			      
+	    </div>
+	    <img v-bind:src="details.img"/>
+	    <div>{{details.con}}</div>
+	    
+	</section>
+</script>
+	   <!--详情模板结束--> 
+	   
+	   <!--搜索模板开始-->
+	   <script type="text/template" id="search_list">
+	<section class="list-page">
+		<div class="active">
+	        		<img src="img/nav_back.png" class="img-responsive" id="ad"/>
+	        		<img src="img/nav_icon.png" class="img-responsive" id="adx"/>	        		
+	        		<span class="title">{{types.title}}</span>
+	        		<img src="img/uncollect.png" class="img-responsive" id="adds"/>
+	        		<img src="img/share.png" class="img-responsive" id="add"/>	        			      
+	    </div>
+	    
+	    <div style="width: 100px; height: 100px; background: red;">
+	    	
+	    </div>
+	</section>
+</script>
+        <!--搜索模板结束-->
+	<script type="text/javascript" src="js/vue.js"></script>
+	<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
 	</body>
 </html>
