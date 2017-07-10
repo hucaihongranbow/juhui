@@ -1,0 +1,54 @@
+
+.hot{
+	width:100%;
+	height:100%;
+	box-sizing: border-box;
+	padding:8% 0 12%;
+	overflow: scroll;
+	position:absolute;
+	z-index: 0;
+	background-color:#fff;
+	/*display: none;*/
+}
+.hot .Dg_nav{
+width:100%;
+	position:absolute;
+	z-index: 100;
+	padding-top:8%;
+	background-color:#FD9395;
+	transform: translateY(-100%);
+
+}
+.hot .Dg_nav a{
+position:absolute;
+	left:50%;
+	top:50%;
+	transform: translateX(-50%) translateY(-50%);
+	color:#fff;
+	font-size: 1.6em;
+}
+.hot .text{
+height:100%;
+	position: relative;
+	z-index: 0;
+	overflow:scroll;
+}
+.hot_data,.hot_data div,.hot_data img {
+	width: 100%;
+}
+.hot_data1{
+	/*padding:1%;*/
+}
+.hot_data1 div{
+	width:50%;
+	float: left;
+	padding:0.5%;
+	padding-bottom:1%;
+	box-sizing: border-box;
+}
+.hot_data1 div img{
+	width:100%;
+}
+.hot_data2 div{
+	width:100%;
+}

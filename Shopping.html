@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>逛街</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="css/app.css" />
+</head>
+<body>
+
+<div class="app" id="app">	
+	<component v-bind:is="view"></component>
+</div>
+
+<!-- 首页 （第一层）-->
+<script type="text/template" id="home">
+<div class="home-page">
+     <div class="banner_bg">
+         <ul class="banner">
+             <li v-for="item in banner.items" v-on:click="clickIndex(item.productId)">
+                 <a href="#product/{{item.id}}">
+                 <img v-bind:src="item.imgUrl">
+                 </a>
+              </li>
+         </ul>
+     </div> 
+       <ul class="ad">
+		<li v-for="item in adt.items" v-on:click="clickIndex(item.cateId)">
+		    <a href="#list/{{item.id}}">
+				<img v-bind:src="item.imgUrl">
+				<p></p>
+			</a>
+		</li>
+	</ul>    
+</div>
+</script>
+
+
+<!-- 健康吃大图（第二层）-->
+<script type="text/template" id="product">
+    <div class="product-page">
+        <div>商品详情</div>
+        <ul class="details">
+            <li v-for="item in details.items">
+                <img v-bind:src="item.imgUrl">
+                
+            </li>
+        </ul>
+    </div>
+</script>
+
+<!--  七张图片点击（第二层）-->
+<script type="text/template" id="list">
+<div class="list-page">
+        <div>全部图片</div>
+        <ul class="all">
+            <li v-for="item in adlist.items" v-on:click="clickIndex(item.sellerId)">
+               <a href="#mean/{{item.id}}">
+                <img v-bind:src="item.imgUrl">
+                </a>
+            </li>
+        </ul>
+</div>
+</script>
+
+<!-- 7张图片的子页的子页 (第三层)-->
+<script type="text/template" id="mean">
+<div class="mean-page">
+        <div>全部</div>
+        <ul class="all">
+            <li v-for="item in admean.items">
+                <img v-bind:src="item.logoUrl">
+                <img v-bind:src="item.imgAdUrl">
+                <img v-bind:src="item.imgUrl">
+            </li>
+        </ul>
+</div>
+</script>
+
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>
