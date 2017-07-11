@@ -1,0 +1,380 @@
+*{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	box-sizing: border-box;
+}
+html{
+	height: 100%;
+}
+
+body{
+	height: 100%;
+	max-width: 768px;
+	margin: 0 auto;
+	background-color:#ccc;
+	box-sizing: border-box;
+}
+
+a,a:visited,a:hover,a:link{
+	text-decoration: none;
+	color:#000; 
+}
+ul{
+	text-decoration: none;
+}
+img{
+	display: block;
+}
+.hot_top{
+	width: 100%;
+	height: 100%;
+	background-color: #ccc;
+}
+.hot_top .hot_nav{
+	width: 100%;
+	height: 3em;
+	line-height: 3em;
+	text-align: center;
+	background-color:#fd9395;
+}
+.hot_top .hot_nav .hot_search{
+	width: 100%;
+	height: 3em;
+}
+.hot_top .hot_nav .hot_search span{
+	color:white;
+	position: relative;
+	left: 20px;
+	font-size:18px;
+}
+.hot_top .hot_nav .hot_search a,.sech_pic{
+	float:right;
+	height: 40px;
+	width: 40px;
+	position: relative;
+	top:3px;
+	right:5px;
+}
+.hot_top .hot_msg{
+	width: 100%;
+}
+.hot_top .hot_msg{
+	width: 100%;
+	padding:5px;
+	height: 120px;
+	position: relative;
+	background-color: #fff;
+	border:1px solid #ccc;
+}
+.hot_top .hot_msg img{
+	position: absolute;
+	height:108px;
+	width:45%;
+}
+.hot_top .hot_msg .appoint{
+	z-index: 999;
+	width:16%;
+    
+}
+.hot_top .hot_msg .right{
+	width: 50%;
+	position: absolute;
+	top:0;
+	height: 115px;
+	right: 0;
+}
+.tit{
+  white-space: nowrap;
+  text-overflow:ellipsis;
+  overflow: hidden;
+}
+.hot_top .hot_msg .right p{
+	font-size: 14px;
+}
+.hot_top .hot_msg .right span{
+  position: absolute;
+  bottom: 0;
+}
+.hot_top .hot_msg .right .num{
+  right: 5px;
+}
+.hot_top .hot_msg .right .fpri{
+	color: #f76075;
+}
+.hot_top .hot_msg .right .line{
+	left: 40px;
+}
+.hot_top .hot_msg .right .pri{
+	font-size: 14px;
+	color: gray;
+	left:50px;
+	text-decoration: line-through;
+}
+/*底部切换样式*/
+.bottom_nav{
+	width: 100%;
+	height: 9%;
+	max-width:768px;
+	position: fixed;
+	bottom:0;
+	background-color: rgb(249,249,249);
+}
+.bottom_nav ul{
+	height: 100%;
+}
+.bottom_nav li{
+	width: 20%;
+	height: 100%;
+	float: left;
+	text-align: center;
+}
+.bottom_nav li img,.bottom_nav li span{
+	display: block;
+	width: auto;
+	margin: 0 auto;
+}
+.container{
+	padding: 0;
+	margin: 0;
+}
+.bottom_nav li img{
+	width: 40%;
+	height: 50%;
+	margin-top: 10%;
+}
+
+.bottom_nav li span{
+	font-size: 0.5em;
+	color: #000000;
+}
+.bottom_nav li:active{
+
+border-bottom: 2px solid rgb(254,148,148);
+}
+.bottom_nav li:visited{
+	border-bottom: 2px solid rgb(254,148,148);
+}
+@media only screen and (min-width: 760px) and (max-width:768px) {
+	.bottom_nav li img{
+	margin-top: 10%;
+}
+.bottom_nav li span{
+	font-size: 1.2em;
+	color: #000000;
+ }
+}
+/*团购详情顶部部分*/
+.sales_top{
+	width:100%;
+	height: 3em;
+	line-height: 3em;
+	text-align: center;
+	position: fixed;
+	top:0;
+	max-width: 768px;
+	background-color:#fd9395 ;
+}
+.sales_top img{
+	float: left;
+	position: relative;
+	top:8px;
+}
+.sales_top .back{
+	height: 30px;
+}
+
+.sales_top .middle{
+	width:80px;
+	height: 35px;
+}
+.sales_top .share{
+  float: right;
+  height: 30px;
+  margin-right: 5px;
+}
+.sales_top .select{
+  float: right;
+  height: 30px;
+  margin-right: 5px;
+}
+.sales_top span{
+	color:white;
+}
+
+/*团购详情正文部分*/
+.sales_bottom{
+	width: 100%;
+	margin-top:50px;
+}
+.sales_bottom img{
+ width: 100%; 
+}
+.sales_bottom .shop{
+	height: 30px;
+	width: 100%;
+	line-height: 30px;
+	background-color: white;
+}
+.sales_bottom .shop .fpri{
+	color:#ff6076;
+	margin-left: 10px;
+	font-weight: bold;
+}
+.sales_bottom .shop .pri{
+	color: gray;
+	text-decoration:line-through;
+	font-size: 14px;
+}
+.sales_bottom .shop .line{
+	font-size: 14px;
+	color:gray;
+}
+.sales_bottom .shop .shop_right{
+	float: right;
+	height:25px;
+	width: 80px;
+	line-height: 25px;
+	text-align: center;
+	color:white;
+	margin:2px 5px 0 ;
+	background-color: #ff6076;
+	border-radius: 5px;
+	font-weight: bold;
+}
+.sales_bottom .date{
+	height: 65px;
+	width: 100%;
+	padding: 5px 5px 0 5px;
+	background-color:#eee;
+}
+.sales_bottom ul li .date img{
+	float: left;
+	height:16px;
+	width:16px; 
+}
+.sales_bottom .date .date_pic,.date_top{
+	float: right; 
+}
+.sales_bottom .date .nump,.date_top{
+	color:gray;
+	font-size: 14px;
+}
+.sales_bottom ul li p{
+	font-size: 14px;
+}
+.sales_bottom ul li .merchant{
+	display: inline-block;
+	margin-left: 10px;
+	width: 100%;
+	height:25px;
+	line-height: 25px; 
+}
+.sales_bottom ul li textarea{
+	width: 100%;
+	height:45px;
+	padding: 5px;
+	background-color:#fff;
+	outline: none;
+	resize:none;
+	overflow-y:visible;
+
+}
+.sales_bottom ul li .textarea_scond{
+	height: 120px;
+	overflow:hidden;
+
+}
+.sales_bottom ul li .textarea_last{
+	height: 200px;
+	overflow:hidden;
+}
+.sales_bottom ul li p .scon{
+	display: inline-block;
+	width: 100%;
+	padding:5px;
+	background-color: #fff;
+}
+.sales_bottom ul li p .link{
+	display: inline-block;
+	height: 25px;
+	width: 100%;
+	background-color: #fff;
+	padding: 5px;
+	color:#ff6076;
+	font-size: 14px;
+	border-top:1px solid #ccc; 
+}
+.sales_bottom ul li p .link .arrow{
+   float:right;
+   color:gray;
+   font-weight: bold;
+
+}
+/*图片详情*/
+.link{
+	width: 100%;
+	height:700px;
+}
+.texts_bottom{
+	height: 30px;
+	width: 100%;
+	line-height: 20px;
+	padding: 5px;
+	position: fixed;
+	bottom:0;
+	background-color: #fff;
+}
+.texts_bottom .f{
+	font-weight: bold;
+	color:#ff6076;
+}
+.texts_bottom .l{
+	font-size: 14px;
+	color:gray;
+}
+.texts_bottom .p{
+	color: gray;
+	font-size: 14px;
+	text-decoration: line-through;
+}
+.texts_bottom a{
+   float: right;
+   height:20px;
+   width: 80px;
+   font-weight: bold;
+   text-align: center;
+   line-height: 20px;
+   color: white;
+   background-color: #ff6076;
+   border-radius: 2px;
+}
+.pic{
+	position: relative;
+	left: -30px;
+}
+.bdsharebuttonbox{
+	width:100%;
+	height:30px;
+	line-height:30px;
+	background-color: #eee;
+}
+.bdsharebuttonbox a{
+	width:14%;
+}
+.baidu_share{
+	height: 60px;
+	width: 100%;
+	z-index: 9999;
+	position:fixed;
+	bottom:0;
+	display: none;
+}
+.baidu_share p{
+	display: inline-block;
+	width: 100%;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	background-color: #fff;
+}
