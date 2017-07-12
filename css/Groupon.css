@@ -274,11 +274,83 @@ img{
 	width: 100%;
 }
 
-.details li .image_text,.details li .image_text a{
+.details li .image_text a{
 	color: red;
 }
 
+.promptly{
+	color: red;
+	/*border: 1px red solid;*/
+
+	position: relative;
+}
+
+.promptly a{
+	position: absolute;
+	right: 0;
+}
+
+.promptly span:nth-child(1){
+	/*font-weight: bold;*/
+	font-size: 18px;
+}
+
+.promptly span:nth-child(2){
+	/*font-weight: bold;*/
+	font-size: 14px;
+	color: #999;
+}
+
+.promptly span:nth-child(3){
+	/*font-weight: bold;*/
+	font-size: 14px;
+	color: #999;
+	text-decoration: line-through;
+}
+
+
 /*模板四  图文详情*/
+
+.image_text-page .top_title{
+	position: relative;
+	text-align: center;
+
+	height: 40px;
+	line-height: 40px;
+	color: #fff;
+	font-size: 16px;
+
+	background-color: rgb(254,148,148);
+
+	position: fixed;
+	top:0;
+	/*left: 0;*/
+
+	/*color: red;*/
+	/*z-index: */
+	width: 100%;
+}
+
+.top_title .back{
+	position: absolute;
+	left: 6px;
+	top: 9px;
+	/*margin: 0;*/
+
+	width: 14px;
+}
+
+.top_title  .logo{
+	width: 80px;
+
+	position: absolute;
+	left: 24px;
+	top: 6px;
+
+	/*float: left;*/
+}
+
+
 #app{
 	height: 100%;
 }
@@ -292,7 +364,7 @@ img{
 
 .img_txt li iframe{
 	width: 100%;
-	height: 200%;
+	height: 100%;
 
 	border: none;
 	overflow: hidden;
@@ -301,15 +373,11 @@ img{
 }
 
 /*顶部*/
-.top_title{
-	position: fixed;
-	top:0;
-	right: 0;
+/*.top_title{*/
 
-	color: red;
-}
+/*}*/
 
-/*底部*/
+/*底部  抢购*/
 .img_txt_order{
 	position: fixed;
 	bottom: 0;
@@ -318,7 +386,120 @@ img{
 	color: red;
 
 	font-size: 16px;
+	color: red;
+
+	background-color: rgb(255,255,255);
+
+	height: 40px;
+	line-height: 40px;
+	width: 100%;
+	/*text-align: right;*/
+	/*position: relative;*/
+
 }
+
+.img_txt_order li{
+	position: absolute;
+	left: 0;
+}
+
+.img_txt_order li span:nth-child(1){
+	/*font-weight: bold;*/
+	font-size: 18px;
+}
+
+.img_txt_order li span:nth-child(2){
+	/*font-weight: bold;*/
+	font-size: 14px;
+	color: #999;
+}
+
+.img_txt_order li span:nth-child(3){
+	/*font-weight: bold;*/
+	font-size: 14px;
+	color: #999;
+	text-decoration: line-through;
+}
+
+.img_txt_order a{
+	position: absolute;
+	right: 0;
+
+	/*background-color: */
+	color: red;
+}
+
+
+/*模板五  订单*/
+.order_form-page{
+	background-color: #eee;
+	height: 100%;
+}
+
+.order_form_top{
+	position: relative;
+	text-align: center;
+
+	height: 40px;
+	line-height: 40px;
+	color: #fff;
+	font-size: 16px;
+
+	background-color: rgb(254,148,148);
+}
+
+.order_form_top .back{
+	position: absolute;
+	left: 6px;
+	top: 9px;
+	/*margin: 0;*/
+
+	width: 14px;
+}
+
+.order_form_top  .logo{
+	width: 80px;
+
+	position: absolute;
+	left: 24px;
+	top: 6px;
+
+	/*float: left;*/
+}
+
+/*订单详情*/
+.indent{
+	margin: 15px;
+	background-color: #fff;
+}
+
+.indent ul li{
+	border-bottom: 1px #ccc solid;
+	padding: 10px;
+}
+
+.indent ul li:nth-child(1){
+	font-weight: bold;
+	color: #000;
+	/*font-size: 18px;*/
+}
+
+.submit{
+	width: 92%;
+	height: 40px;
+	line-height: 40px;
+	position: absolute;
+	bottom: 2%;
+	left: 4%;
+
+	background: rgb(60,60,80);
+	color: white;
+	text-align: center;
+}
+
+
+
+
 
 /*模板六 搜索开始界面*/
 .seach-page .top{
@@ -348,6 +529,16 @@ img{
 	width: 65%;
 }
 
+.seach-page .seach #delet{
+	position: absolute;
+	right: 2px;
+	top:2px;
+
+	width: 20px;
+	margin: 0; 
+	
+}
+
 .seach-page .seach_result{
 	position: absolute;
 	right: 4px;
@@ -356,26 +547,48 @@ img{
 }
 
 /*模板七 搜索结果*/
+.seach_result-page{
+	background-color: #eee;
+
+	height: 100%;
+}
+
 .now_bg{
 	/*border: 1px red solid;*/
 	position: relative;
 	/*margin-bottom: 40px;*/
 	height: 30px;
-	line-height: 28px;
+	line-height: 30px;
+	/*padding-left: 12px;*/
+
+	margin: 10px;
+	margin-left: 0;
+
+	
 }
 
 .now_bg  .now{
 	position: absolute;
-	left: 0;
+	left: 12px;
 }
 
 .now_bg li {
 	float: left;
 	margin-left: 80px;
+
+	/*background-color: #fff;*/
 }
 
-.seach_data{
-	/*margin-top: 20px;*/
-	/*border: 1px red solid;*/
+.seach_result-page .all {
+	padding: 10px;
+	padding-bottom: 0;
+	padding-top: 0;
 
+	/*height: 100%;*/
+}
+
+.seach_result-page .all li{
+	background-color: #fff;
+	border: none;
+	padding: 5px;
 }

@@ -13,12 +13,8 @@ body{
 	background-color: #eee;
 	margin: 0 auto;
 	box-sizing: border-box;
-<<<<<<< HEAD
 	/*border: 1px red solid;*/
 	height: 100%;
-=======
-	border: 1px red solid;
->>>>>>> origin/master
 }
 
 /*顶部*/
@@ -80,11 +76,7 @@ body{
 	background-color: #fff;
 	resize: none;
 
-<<<<<<< HEAD
 	/*text-indent: 1em;*/
-=======
-	text-indent: 1em;
->>>>>>> origin/master
 }
 .content_bg button{
 	width: 100%;
@@ -101,7 +93,6 @@ body{
 	font-size: 22px;
 }
 
-<<<<<<< HEAD
 
 
 /*弹框*/
@@ -138,8 +129,6 @@ body{
 
 
 
-=======
->>>>>>> origin/master
 /*媒体变化*/
 
 

@@ -1,5 +1,5 @@
-window.onload = function () 
-{   
+// window.onload = function () 
+// {   
 	// 一、封装获取模板
 	var Util = {
 		// 获取模板内容
@@ -106,7 +106,7 @@ window.onload = function ()
 			list.send("action=listPro&acode=1&uid=25177&type=1");
 		},
 		methods:{
-			//商品详情  
+			// 去 商品详情  
 			//banner
 			clickId: function(Index_id)
 			{   
@@ -133,7 +133,8 @@ window.onload = function ()
 
 				// Index_id = 8 类
 				list_id = Index_id;
-			}
+			},
+			
 
 		}
 
@@ -221,43 +222,83 @@ window.onload = function ()
 	    },
 	    created:function () 
 		{   
-			var that = this;
+			
 			// console.log(Index_);
 
-		    var xhr = new XMLHttpRequest();
-			xhr.onreadystatechange = function (argument) 
-			{
-				if (xhr.readyState == 4) 
+			var com_index = Index_;
+            
+            // function comdity_data() 
+			// {   
+				var that = this;
+			    var xhr = new XMLHttpRequest();
+				xhr.onreadystatechange = function (argument) 
 				{
-					var d1 = xhr.responseText;
-					var d2 = JSON.parse(d1).data;
-                    
-	                var proArry = [];
-					proArry.push(d2);
-					// console.log(proArry);
+					if (xhr.readyState == 4) 
+					{
+						var d1 = xhr.responseText;
+						var d2 = JSON.parse(d1).data;
+	                    
+		                var proArry = [];
+						proArry.push(d2);
+						console.log(proArry);
 
-					that.details = proArry;
-				}
-			};
+						that.details = proArry;
+					}
+				};
 
-			// 3
-			var url = "http://juhuituan.boguyuan.com/juhuituan/reqData?";
-			xhr.open("post",url,true);
-			xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-			xhr.send("action=viewPro&acode=1&uid=25177&id="+Index_);
+				// 3
+				var url = "http://juhuituan.boguyuan.com/juhuituan/reqData?";
+				xhr.open("post",url,true);
+				xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+				xhr.send("action=viewPro&acode=1&uid=25177&id="+com_index);	
+			// };
+
+			// 自动展示
+			// comdity_data();
+            
+
+            // 当前刷新展示
+            // window.location.reload();
+   //          window.location.reload = function function_name(argument) {
+   //          	// body...
+   //          };
+			// window.onload = function (argument) 
+			// {
+			// };
+
+
 		},
 
 		methods:{
-			clickUrl(url){
+			// 到 图文详情
+			clickUrl(url,fpri,pri,ti){
 				link = url;
 				// console.log("link");
+				fpri_ = fpri;
+				pri_ = pri;
+
+
+				ti_ = ti;
+			},
+			back(){
+				history.back();
+			},
+			// 到订单
+			go_order_form(ti,fpri){
+				order_ti= ti;
+				order_pfri = fpri;
+
+				console.log(order_ti);
+				console.log(order_pfri);
 			}
+
+
 		}
 
     });
 
-    //  4 模板四 商品详情 到 图文详情-->
-    var link;
+    //  4 模板四 图文详情    从商品详情 而来 -->
+    var link,fpri_,pri_,ti_;
     var image_text = Vue.extend(
     {
     	template:Util.tpl("image_text"),
@@ -266,7 +307,10 @@ window.onload = function ()
     		return{
     			img_txt:[
     			{
-    				links:link
+    				links:link,
+    				fpri_:fpri_,
+    				pri_:pri_,
+    				ti_:ti_ // 到订单 项目标题
     			}]
     		}
     		
@@ -275,14 +319,40 @@ window.onload = function ()
     	created:function (argument) 
     	{
     		// console.log(link);
+    	},
+    	methods:{
+    		back(){
+				history.back();
+			},
+			go_order_form(ti,fpri){
+				order_ti=ti;
+				order_pfri = fpri;
+			}
     	}
     });
 
 
-    // 模板五 商品详情 到  抢购订单
+    // 模板五 商品详情 来到  抢购订单
+    var order_ti,order_pfri;
     var order_form = Vue.extend(
     {
-    	template:Util.tpl("order_form")
+    	template:Util.tpl("order_form"),
+    	data:function () 
+    	{
+    			
+    		return{
+    		    order_form:[
+    		    {
+    				ti:order_ti,
+    				pfri:order_pfri
+    			}]
+    		}
+    	},
+    	methods:{
+    		back(){
+				history.back();
+			}
+    	}
     })
 
 
@@ -310,7 +380,23 @@ window.onload = function ()
 
     			// 传参出去
     			con = value;
-    		}
+    		},
+    		delet(){
+    				// 3、清空搜索框
+				
+
+				$('#delet').on('click',function () 
+				{   
+					
+					
+					$("#seach_input").val("");
+
+				});
+    		},
+    		back(){
+				history.back();
+			}
+
     	}
     });
 
@@ -360,10 +446,13 @@ window.onload = function ()
 			xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
             
             // 总
-			if (con=="") 
-			{
-			   xhr.send("action=listPro&acode=1&uid=25177&type=1");	
-			}
+			// if (con=="") 
+			// {
+			   // xhr.send("action=listPro&acode=1&uid=25177&type=1");	
+			// }
+			// else{
+				xhr.send("action=search&acode=1&con="+con)
+			// }
 
 		},
 
@@ -387,17 +476,17 @@ window.onload = function ()
 	// 3 商品详情
 	Vue.component('product', product);
     
-    //   图文详情
+    // 4 图文详情
 	Vue.component("image_text",image_text);
     
-    // 4 搜索 界面
+    // 5 搜索 界面
 	Vue.component("seach",seach);
 
-	// 搜索结果
+	// 6 搜索结果
 	Vue.component("seach_result",seach_result);
     
 
-	// 5 订单
+	// 7 订单
 	Vue.component("order_form",order_form);
 
 
@@ -406,7 +495,7 @@ window.onload = function ()
 	{
 		el: '#app',
 		data: {
-			view: 'home',
+			view: '',
 			query:[],
 			hideSearch: true
 		}
@@ -415,7 +504,8 @@ window.onload = function ()
 
 
     // 五、路由切换
-    var route = function () {
+    var route = function () 
+    {
 		// 每次当hash改变的时候，我们要将它获取出来，根据hash值来渲染页面
 		// #list\type\1 =》 list\type\1
 	    // var hash = location.hash.slice(1);
@@ -456,14 +546,9 @@ window.onload = function ()
 	// },1000);
 
 
-	// 2、返回
-	var back = $("#back");
-	// console.log(back);
 	
-	$("#back").click(function () 
-	{
-		history.back();
-	})
 
 
-}
+
+
+// }
