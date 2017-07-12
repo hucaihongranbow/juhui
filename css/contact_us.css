@@ -13,11 +13,7 @@ body{
 	background-color: #eee;
 	margin: 0 auto;
 	box-sizing: border-box;
-<<<<<<< HEAD
 	/*border: 1px red solid;*/
-=======
-	border: 1px red solid;
->>>>>>> origin/master
 }
 
 /*顶部*/
@@ -59,7 +55,6 @@ body{
 
 
 /*内容 content*/
-<<<<<<< HEAD
 .content{
 	width: 100%;
 	padding-left: 14%;
@@ -83,11 +78,6 @@ body{
 	margin-top: 60px;
 }
 
-=======
-
-
-
->>>>>>> origin/master
 /*媒体变化*/
 
 
