@@ -23,14 +23,14 @@ ur="http://juhuituan.boguyuan.com/juhuituan"
 function sendRequest() {
 	$.ajax({
 		'type':'get',
-		'url':ur+'/reqData?action=listFocusAd&acode=1&uid=22285',
+		'url':ur+'/reqData?action=listFocusAd&acode=1&uid=25109',
      'success':function (data) {
      	data=JSON.parse(data)
      	console.log(data);
      	console.log(data.data.items.length)
      	var test=data.data.items
      	for (var i=0;i<test.length;i++) {     		
-     		data1.push({"id":i,"url":ur+test[i].img})
+     		data1.push({"id":test[i].inid,"url":ur+test[i].img})
      	}
      },
      error:function () {
@@ -44,7 +44,7 @@ var data2=[];
 function listRequest() {
 	$.ajax({
 		'type':"get",
-		'url':ur+"/reqData?action=listCate&acode=1&uid=22285&type=1",
+		'url':ur+"/reqData?action=listCate&acode=1&uid=25109&type=1",
 		'success':function (datas) {
 			data=JSON.parse(datas);
 			console.log(data)
@@ -66,7 +66,7 @@ var data3=[];
 function sellRequest() {
 	$.ajax({
 		'type':"get",
-		'url':ur+"/reqData?action=listPro&acode=1&uid=22285&type=1",
+		'url':ur+"/reqData?action=listPro&acode=1&uid=25109&type=1",
 		"success":function (dats) {
 //			alert("请求成功")
 			data=JSON.parse(dats);
@@ -74,7 +74,7 @@ function sellRequest() {
 			console.log(data.data.items.length)
 			var produt=data.data.items;
 			for (var k=0;k<produt.length;k++) {
-				data3.push({"id":k,"Id":produt[k].id,"url":ur+produt[k].img,"title":produt[k].ti,"content":produt[k].con,"price":produt[k].pri,"num":produt[k].num})
+				data3.push({"id":k,"Id":produt[k].id,"url":ur+produt[k].img,"title":produt[k].ti,"content":produt[k].con,"price":produt[k].pri,"num":produt[k].num,"fpri":produt[k].fpri})
 				console.log(data3);
 			}
 		},
@@ -108,38 +108,21 @@ var Home = Vue.extend({
 	},
 	methods:{
 		clicks:type_list,
-		click_P:details
+		click_P:details,
+		C_banner:banner
 	}//由于组件作用域是独立的  所以所有的方法都只能写在组件内才能使用
 });
 
-function details (pids) {
-			alert(pids);
-			$.ajax({
-				'type':"post",
-				'url':'http://juhuituan.boguyuan.com/juhuituan/reqData?action=viewPro&acode=1&uid=25109&id='+pids,
-				success:function (datas) {
-					alert("获得数据")
-					data=JSON.parse(datas);
-			        console.log(data)
-			        var detail = data.data;
-			        console.log(detail);
-			        data6.push({"img":ur+detail.img,"fpri":detail.fpri,"pri":detail.pri,"num":detail.num,"dt":detail.dt,"ti":detail.ti,"con":detail.con,"jcon":detail.jcon,"scon":detail.scon,"xcon":detail.xcon})
-			        console.log(data6)			        
-				}
-			})
-			
-		}
-
 
 function type_list (pid) {
-			alert("去详情页")
+//			alert("去详情页")
 			alert(pid);
 			$.ajax({
 				'type':"post",
 				'url':'http://juhuituan.boguyuan.com/juhuituan/reqData?action=listPro&acode=1&uid=25109&type=2&id='+pid,
 				
 				success:function  (data1) {
-					alert("获得数据")
+//					alert("获得数据")
 					data=JSON.parse(data1);
 			        console.log(data)
 			        var prot = data.data.items;
@@ -155,7 +138,7 @@ function type_list (pid) {
 				'url':'http://juhuituan.boguyuan.com/juhuituan/reqData?action=listCate&acode=1&uid=25109&type=4&id='+pid,
 				
 				success:function  (data2) {
-					alert("列表数据")
+//					alert("列表数据")
 					data=JSON.parse(data2);
 			        console.log(data)
 			        var prote = data.data.items;
@@ -169,6 +152,49 @@ function type_list (pid) {
 		})	
 			
 		}
+
+function banner (ban) {
+	         alert(ban)
+	//轮播区
+			$.ajax({
+				"type":"post",
+				"url":"http://juhuituan.boguyuan.com/juhuituan/reqData?action=viewPro&acode=1&uid=25109&id="+ban,
+				success:function (bans) {
+					alert("轮播")
+					data = JSON.parse(bans);
+					console.log(data)
+					var detail1 = data.data;
+					console.log(detail1);	
+					data6.push({"imgs":ur+detail1.img,"fpri":detail1.fpri,"pri":detail1.pri,"num":detail1.num,"dt":detail1.dt,"ti":detail1.ti,"con":detail1.con,"jcon":detail1.jcon,"scon":detail1.scon,"xcon":detail1.xcon,"pjper":detail1.pjper,"scsta":detail1.scsta,"score":detail1.score})
+					
+				}
+			})
+	
+}
+
+    
+    function details (pids) {
+			alert(pids);
+			//列表区
+			$.ajax({
+				'type':"post",
+				'url':'http://juhuituan.boguyuan.com/juhuituan/reqData?action=viewPro&acode=1&uid=25109&id='+pids,
+				success:function (datas) {
+//					alert("获得数据")
+					data=JSON.parse(datas);
+			        console.log(data)
+			        var detail = data.data;
+			        console.log(detail);
+			        console.log(detail.length)
+			        	data6.push({"imgs":ur+detail.img,"fpri":detail.fpri,"pri":detail.pri,"num":detail.num,"dt":detail.dt,"ti":detail.ti,"con":detail.con,"jcon":detail.jcon,"scon":detail.scon,"xcon":detail.xcon,"pjper":detail.pjper,"scsta":detail.scsta,"score":detail.score})
+			        	
+			        	console.log(data6)
+			        
+			        			        
+				}
+			});			
+		}
+    
 //type_list();
 //console.log(data5)
 //构造分类列表组件
@@ -203,11 +229,32 @@ var Search = Vue.extend({
 //		console.log(details.con)
 	}
 })
+
+var Search = Vue.extend({
+	template:Util.tpl('search_list'),
+	data:function  () {
+		return{
+//			search:
+		}
+//		console.log(details.con)
+	}
+})
+
+var Indent = Vue.extend({
+	template:Util.tpl('indent_list'),
+	data:function  () {
+		return{
+//			search:
+		}
+//		console.log(details.con)
+	}
+})
 //注册首页组件
 Vue.component('home', Home);
 Vue.component('list',List);
 Vue.component('product',Product);
 Vue.component('search',Search);
+Vue.component('indent',Indent);
 
 var app = new Vue({
 	el: '#app',

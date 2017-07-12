@@ -79,9 +79,10 @@ body{
 	height: 150px;
 }
 .home-page{
-	background: greenyellow;
+	height: 100%;
+	margin-bottom: 10%;
+	background: rgb(234,234,234);
 }
-
 
 .wh{
 	width: 100%;
@@ -97,11 +98,11 @@ body{
 }
 .lunbo{
 	width: 200%;
-	height: 100%;
+	height: auto;
 	/*background-color: yellowgreen;*/
 }
 .lb_li{
-	width: auto;
+	width: 50%;
 	float: left;
 	height: auto;
 	/*margin-top: 5%;*/
@@ -109,7 +110,7 @@ body{
 }
 
 .lb_li img{
-	width: 360px;
+	width: 100%;
 }
 
 .lunbo li:nth-child(2){
@@ -121,8 +122,29 @@ body{
 	padding: 0;
 }
 
+.head{
+	position: relative;
+}
+
+.head .all_sell{
+	color: rgb(163,163,163);
+	width: 96%;
+	height: 3%;
+	margin-top: 2px;
+	margin: 0 auto;
+	position: relative;
+	background: white;
+	border: solid 1px rgb(204,204,204);
+}
+
 .head span{
-	margin-bottom: 2%;
+	margin: 2% 1%;
+}
+
+.all{
+	position: absolute;
+	right: 0;
+	top: -35%;
 }
 
 .list ul li{
@@ -147,23 +169,35 @@ body{
 	width: 30%;
 }
 .product li{
-	padding: 3%;
+	margin: 0 2% 2% 2%;
+	padding: 2%;
+	background: white;
 	position: relative;
+	border: solid 1px rgb(204,204,204);
 }
 .product div{
+	color: rgb(163,163,163);
 	width: 65%;
 	position: absolute;
 	left: 35%;
 	top: 0;
 }
 .product div:nth-child(3){
+	color: rgb(198,198,198);
 	top: 25%;
 }
 .product div:nth-child(4){
-	top: 80%;
+	color: red;
+	top: 70%;
 }
 .product div:nth-child(5){
-	top: 80%;
+	color: rgb(198,198,198);
+	top: 70%;
+	left: 47%;
+}
+.product div:nth-child(6){
+	color: rgb(198,198,198);
+	top: 70%;
 	left: 90%;
 }
 
@@ -193,14 +227,17 @@ body{
 	top: 25%;
 	left: 1%;
 }
-.title{
+.title,.titles{
 	display: inline-block;
-	width: 10%;
-	height: 80%;
-	border: solid 1px black;
+	width: auto;
 	position: absolute;
 	left: 45%;
 	top: 10%;
+}
+.titles{
+	height: 80%;
+	font-size: 1.5em;
+	color: white;
 }
 #add,#adds{
 	display: inline;
@@ -240,4 +277,72 @@ section{
 	height: 15%;
 	border: dashed 1px rosybrown;
 	margin: 0 auto;
+}
+.Q_gou{
+	height: 10%;
+	background-color: white;
+}
+
+
+/*订单提交*/
+.indent{
+	width: 92%;
+	height: 35%;
+	border: solid 1px grey;
+	position: relative;
+	top: 8%;
+	margin: 0 auto;
+}
+.tel,.tels{
+	width: 92%;
+	height: 5%;
+	border: solid 1px grey;
+	position: relative;
+	top: 9%;
+	margin: 0 auto;
+}
+.tel{background: rgb(215,217,216);}
+.tels{
+	height: 7%;
+	top: 10%;
+}
+.tel_input,.bind{
+	border: solid 1px red;
+	width: 40%;
+	height: 60%;
+	float: left;
+	margin-top: 2.5%;
+	margin-left:3.5%;
+}
+.bind{
+	background: rgb(255,97,96);
+	width: 25%;
+	height: 60%;
+	margin-left:28%;
+	float: left;
+}
+.list_sell{
+	width: 100%;
+	height: 100%;
+}
+.list_sell li:nth-child(1){
+	height: 30%;
+	width: 100%;
+	border-bottom: solid 1px gray;
+}
+.list_sell li:nth-child(2),.list_sell li:nth-child(3),.list_sell li:nth-child(4){
+	height: 23.3%;
+	width: 100%;
+	border-bottom: solid 1px gray;
+}
+.list_sell li:nth-child(4){border-bottom: 0}
+.submit{
+	width: 92%;
+	height: 5%;
+	position: absolute;
+	bottom: 2%;
+	left: 4%;
+	background: rgb(60,60,80);
+	color: white;
+	text-align: center;
 }

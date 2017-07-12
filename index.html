@@ -14,21 +14,14 @@
 		<link rel="stylesheet" type="text/css" href="css/bottom_nav.css"/>
 		
 		<script src="jquery/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/bottom.js" type="text/javascript" charset="utf-8"></script>
+		
 	</head>
 	<body>
-		
-		<div class="h_content container" id="app">
-			
-			
-			<!--模板开始-->	
+		<!--容器-->
+		<div class="h_content container" id="app">				
             <!--挂载点-->
-			<component v-bind:is="view"></component>
-			<!--模板结束-->								
-	       	
-			
+			<component v-bind:is="view"></component>			
 		</div>
-	    
 	    
 	    <!--首页模板开始-->
 	    <script type="text/template" id="tpl_home">
@@ -50,9 +43,9 @@
 	    		
 	        <div class="wh">
 	        	<ul class="lunbo types">
-	        		<li v-for="item in lunbo" class="lb_li" @click="">
+	        		<li v-for="item in lunbo" class="lb_li" v-on:click="C_banner(item.id)">
 	        			<a href="#product/{{item.id}}">
-	        				<img src="{{item.url}}" alt="" class="img-responsive"/>
+	        				<img src="{{item.url}}" class="img-responsive"/>
 	        			</a>
 	        		</li>
 	        	</ul>
@@ -72,9 +65,15 @@
 	        <!--类目列表技术-->
 	        
 	        <!--热门团购开始-->
+	        <div style="height: 1%;">
+	        	
+	        </div>
 	        <div class="hot_sell">
 	        	<div class="head">
-	        		<span>热门团购</span><span>全部团购></span>
+	        		<div class="all_sell">
+	        			<span>热门团购</span><span class="all">全部团购></span>
+	        		</div>
+	        		
 	        		
 	        		<!--团购列表-->
 	        		<ul class="clearfix product">
@@ -83,8 +82,9 @@
 	        				<img src="{{item.url}}"/>
 	        				<div class="title">{{item.title}}</div>
 	        				<div class="content">{{item.content}}</div>
-	        				<div class="price">{{item.price}}</div>
-	        				<div class="num">{{item.num}}</div>
+	        				<div class="">{{item.fpri}}</div>
+	        				<div class="price">/&nbsp;{{item.price}}</div>
+	        				<div class="num">{{item.num}}人</div>
 	        				</a>
 	        			</li>
 	        		</ul>
@@ -113,7 +113,7 @@
 	        	<div class="active">
 	        		<img src="img/nav_back.png" class="img-responsive" id="ad"/>
 	        		<img src="img/nav_icon.png" class="img-responsive" id="adx"/>	        		
-	        		<span class="title">{{types.title}}</span>
+	        		<span class="title">{{}}</span>
 	        		<img src="img/icon_search.png" class="img-responsive" id="add"/>
 	        	</div>
 	        	
@@ -140,13 +140,46 @@
 		<div class="active">
 	        		<img src="img/nav_back.png" class="img-responsive" id="ad"/>
 	        		<img src="img/nav_icon.png" class="img-responsive" id="adx"/>	        		
-	        		<span class="title">{{types.title}}</span>
+	        		<span class="titles">团购详情</span>
 	        		<img src="img/uncollect.png" class="img-responsive" id="adds"/>
 	        		<img src="img/share.png" class="img-responsive" id="add"/>	        			      
 	    </div>
-	    <img v-bind:src="details.img"/>
-	    <div>{{details.con}}</div>
-	    
+	    <div v-for="item in details" class="affixs">
+	    <img v-bind:src="item.imgs" class="img-responsive"/>
+	    <div class="Q_gou" style="height: 10%;">
+	    	<span>{{item.fpri}}</span>/
+	        <span>{{item.pri}}</span>
+	        <span><a href="#indent">立即购买</a></span>
+	    </div>
+	    <div class="dates">
+	    	<span><img src="img/people.png"/>{{item.num}}人</span>
+	    	<span><img src="img/clock.png"/>{{item.dt}}</span>
+	    </div>
+	    <h4>{{item.ti}}</h4>
+	    <div>{{item.con}}</div>
+	    <div class="">商家信息</div>
+	    <div class="">{{item.jcon}}</div>
+	    <div class="">套餐内容</div>
+	    <div class="">{{item.scon}}</div>
+	    <div class="">
+	    	<span id="">查看图文详情</span>
+	    	<span id=""><img src="img/arrow_icon.png"/></span>
+	    </div>
+	    <div class="">消费提醒</div>
+	    <div class="">{{item.xcon}}</div>
+	    <div class="">
+	    	<span id="">用户评价</span>
+	    	<span id="">
+	    		<img src="img/star_empty.png"/>
+	    		<img src="img/star_empty.png"/>
+	    		<img src="img/star_empty.png"/>
+	    		<img src="img/star_empty.png"/>
+	    		<img src="img/star_empty.png"/>
+	    	</span>
+	    	<span id="">{{item.score}}分</span>
+	    	<span id="">{{item.pjper}}人评价</span>
+	    </div>
+	    </div>
 	</section>
 </script>
 	   <!--详情模板结束--> 
@@ -168,6 +201,36 @@
 	</section>
 </script>
         <!--搜索模板结束-->
+        
+        <!--订单提交模板-->
+        <script type="text/template" id="indent_list">
+	<section class="list-page">
+		<div class="active">
+	        		<img src="img/nav_back.png" class="img-responsive" id="ad"/>
+	        		<img src="img/nav_icon.png" class="img-responsive" id="adx"/>	        		
+	        		<span class="titles">提交订单</span>
+	        				      
+	    </div>
+	    
+	    <div class="indent">
+	    	<ul class="list_sell">
+    			<li>项目</li>
+    			<li>单价</li>
+    			<li>数量</li>
+    			<li>总价</li>
+			</ul>
+	    </div>
+	    <div class="tel">您的手机号</div>
+	    <div class="tels">
+	    	<div class="tel_input">
+	    		
+	    	</div>
+	    	<div class="bind">绑定新手机号</div>
+	    </div>
+	    <div class="submit">提交订单</div>
+	</section>
+</script>
+<!--订单提交模板-->
 	<script type="text/javascript" src="js/vue.js"></script>
 	<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
 	</body>
