@@ -1,0 +1,70 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+li{
+	list-style: none;
+}
+html{
+	height: 100%;
+}
+
+body{
+	height: 100%;
+	max-width: 768px;
+	/*border: 1px red solid;*/
+	margin: 0 auto;
+	box-sizing: border-box;
+}
+
+a{
+	text-decoration: none;
+	color:#000; 
+}
+
+img{
+	display: block;
+}
+.home-page{
+	width:100%;
+	background-color: teal;
+}
+.home-page li{
+	width:100%;
+}
+.home-page li img{
+	width:100%;
+	float: left;
+}
+.home-page .ad{
+	width:100%;
+}
+.home-page .ad li{
+	width:100%;
+}
+.home-page .ad li img{
+	margin-top: 5px;
+    padding:7px;
+	width:45%;
+	float:left;
+}
+.all li{
+	width:100%;
+}
+.all li img{
+	/*margin-top: 100px;*/
+	float: left;
+	width:50%;
+}
+
+
+
+
+
+
+
+
+
+
+
+

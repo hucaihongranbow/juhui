@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>逛街</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="css/hotsale.css" />
+</head>
+<body>
+
+<div class="app" id="app">	
+	<component v-bind:is="view"></component>
+</div>
+
+<!-- 首页 （第一层）-->
+<script type="text/template" id="home">
+<div class="home-page">
+
+   <!-- 头部-->
+         <div class="shang">商家展示
+             <a href="#search">
+                 <img src="img/icon_search.png">
+             </a>
+         </div>
+   <!-- 首页大图-->
+     <div class="banner_bg">
+         <ul class="banner">
+             <li v-for="item in banner.items" v-on:click="clickIndex(item.productId)">
+
+                 <a href="#product/{{item.id}}">
+                 <img v-bind:src="item.imgUrl">
+                 </a>
+              </li>
+         </ul>
+     </div> 
+     <!-- 首页七张小图-->
+       <ul class="ad">
+		<li v-for="item in adt.items" v-on:click="clickIndex(item.cateId)">
+		    <a href="#list/{{item.id}}">
+				<img v-bind:src="item.imgUrl">
+				<p></p>
+			</a>
+		</li>
+	</ul>    
+</div>
+<!-- 底部 -->
+<div class="bottom_nav container">
+        <ul>
+            <a href="index.html">
+                <li class="">
+                    <img src="img/tg_normal.png" class=""/>
+                    <span>团购</span>
+                </li>
+            </a>
+
+            <a href="hot_list.html">
+                <li class="">
+                    <img src="img/rm_normal.png" class=""/>
+                    <span>热卖</span>
+                </li>
+            </a>
+
+            <a href="Shopping.html">
+                <li class="naver">
+                    <img src="img/merchant_icon_select.png" class="navImg "/>
+                    <span>逛街</span>
+                </li>
+            </a>
+
+            <a href="my/login home.html">
+                <li class="">
+                    <img src="img/user_normal.png" class="img-responsive navImg"/>
+                    <span>我的</span>
+                </li>
+            </a>
+
+            <a href="more.html">
+                <li class="">
+                    <img src="img/more_normal.png" class=" "/>
+                    <span>更多</span>
+                </li>
+            </a>
+        </ul>
+    </div>
+
+</script>
+
+
+<!-- 健康吃大图（第二层）-->
+<script type="text/template" id="product">
+    <div class="product-page">
+        <div class="last">
+       <a href=""onclick="javascript:history.back(-1);">
+       <img src="img/nav_back.png" class="blacks"style="width:30px;height:30px;margin-top: 15px;margin-left: 2px;" id="adss"/>
+       </a>
+       
+        <img src="img/nav_icon.png" class="blacks" id="ads"/>
+        <p>商品详情</p>  
+    </div>
+        <ul class="details">
+            <li v-for="item in details.items">
+                <img v-bind:src="item.imgUrl">
+                
+            </li>
+        </ul>
+    </div>
+</script>
+
+<!--  七张图片点击（第二层）-->
+<script type="text/template" id="list">
+<div class="list-page">
+        <div class="last">
+       <a href=""onclick="javascript:history.back(-1);">
+       <img src="img/nav_back.png" class="blacks"style="width:30px;height:30px;margin-top: 15px;margin-left: 2px;" id="adss"/>
+       </a>
+       
+        <img src="img/nav_icon.png" class="blacks" id="ads"/>
+        
+        <a href="#search">
+             <img src="img/icon_search.png" class="blacks"style="float:right;width:30px;height:30px;margin-top: 15px;margin-right: 10px;" id="adss"/>
+       </a>
+    </div>
+        <ul class="all">
+            <li v-for="item in adlist.items" v-on:click="clickIndex(item.sellerId)">
+               <a href="#mean/{{item.id}}">
+                <img v-bind:src="item.imgUrl">
+                </a>
+            </li>                     
+        </ul>
+        <a href="#list">
+             <p>查看更多 </p>               
+        </a>
+        
+
+</div> 
+</script>
+
+<script type="text/javascript" id="other"> 
+     <li id="other">
+        
+        <a href="#mean/{{item.id}}">
+            <img v-bind:src="item.imgUrl"> 
+        </a> 
+        
+        </li> 
+</script>
+
+<!-- 7张图片的子页的子页 (第三层)-->
+<script type="text/template" id="mean">
+<div class="mean-page">
+        <div class="list-page">
+        <div class="last">
+       <a href=""onclick="javascript:history.back(-1);">
+       <img src="img/nav_back.png" class="blacks"style="width:30px;height:30px;margin-top: 15px;margin-left: 2px;" id="adss"/>
+       </a>
+       
+        <img src="img/nav_icon.png" class="blacks" id="ads"/>
+        <p>商家</p>          
+    </div>
+    
+
+
+        <ul class="all">
+            <li v-for="item in admean.items">
+                <img v-bind:src="item.logoUrl">
+                <img v-bind:src="item.imgAdUrl">
+                <img v-bind:src="item.imgUrl">
+            </li>
+        </ul>
+</div>
+</script>
+
+<!--搜索模板开始（首页第一层）-->
+<script type="text/template" id="search_list">
+    <section class="list-page">
+        <div class="active">
+                <a href="#home" >
+                    <img src="img/nav_back.png" class="blacks"style="width:30px;height:30px;margin-top: 15px;margin-left: 2px;" id="ad"/>
+                </a>
+                    <img src="img/icon_shop.png" class="house"style="width:30px;height:30px;margin-top: 15px;margin-left: 2px;" id="adx"/> 
+                                      
+                    <span class="title">{{types.title}}
+                <a href="#searchs">
+                    <img src="img/icon_search.png" style="width:25px;height:25px;">
+                </a>
+
+                <input type="text" id="onput" class="head_search_1" value="输入商家名称" onfocus="if(this.value == '输入商家名称') this.value='';"/>
+                    
+                    </span>
+                    <a href="#searchs">
+                         <p>搜索</p>
+                    </a>                            
+        </div>       
+    </section>
+</script>
+        <!--搜索模板结束（子页第二层）-->
+<script type="text/javascript" type="text/template" id="search_biao">
+    <div class="last">
+       <a href=""onclick="javascript:history.back(-1);">
+       <img src="img/nav_back.png" class="blacks"style="width:30px;height:30px;margin-top: 15px;margin-left: 2px;" id="adss"/>
+       </a>
+       
+        <img src="img/nav_icon.png" class="blacks" id="ads"/>
+        <p>搜索</p>  
+    </div>
+    <p class="when">当前搜索：换个</p>
+    <p class="why">暂无数据</p>
+</script>
+
+
+
+
+       
+
+
+
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript" src="js/hotsale.js"></script>
+</body>
+</html>
