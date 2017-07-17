@@ -13,7 +13,7 @@ body{
 	max-width: 768px;
 	margin: 0 auto;
 	background-color:#ccc;
-	box-sizing: border-box;
+	box-sizing:border-box;
 }
 
 a,a:visited,a:hover,a:link{
@@ -67,6 +67,7 @@ img{
 	background-color: #fff;
 	border:1px solid #ccc;
 }
+
 .hot_top .hot_msg img{
 	position: absolute;
 	height:108px;
@@ -89,8 +90,16 @@ img{
   text-overflow:ellipsis;
   overflow: hidden;
 }
+
 .hot_top .hot_msg .right p{
 	font-size: 14px;
+	height:34px;
+	overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp:2;
+    -webkit-box-orient: vertical;
+
 }
 .hot_top .hot_msg .right span{
   position: absolute;
@@ -112,32 +121,43 @@ img{
 	text-decoration: line-through;
 }
 /*底部切换样式*/
+/*底部*/
 .bottom_nav{
 	width: 100%;
-	height: 9%;
-	max-width:768px;
+	/*height: 9%;*/
+	max-width: 768px;
+
 	position: fixed;
-	bottom:0;
+	bottom: 0;
+
 	background-color: rgb(249,249,249);
 }
+
 .bottom_nav ul{
 	height: 100%;
 }
+
 .bottom_nav li{
 	width: 20%;
 	height: 100%;
 	float: left;
-	text-align: center;
 }
+
+.bottom_nav li.naver{
+	border-bottom: 3px red solid;
+}
+
 .bottom_nav li img,.bottom_nav li span{
 	display: block;
 	width: auto;
 	margin: 0 auto;
 }
+
 .container{
 	padding: 0;
 	margin: 0;
 }
+
 .bottom_nav li img{
 	width: 40%;
 	height: 50%;
@@ -145,24 +165,61 @@ img{
 }
 
 .bottom_nav li span{
+	margin-left: 33%;
 	font-size: 0.5em;
 	color: #000000;
 }
-.bottom_nav li:active{
 
-border-bottom: 2px solid rgb(254,148,148);
+
+
+
+@media only screen and (min-width: 750px)
+{  
+	
+
+	.bottom_nav li img
+	{
+	   margin-top: 10%;
+    }
+
+    .bottom_nav li span
+    {
+		margin-left: 33%;
+		font-size: 2em;
+		color: #000000;
+
+		position: relative;
+		left: 6px;
+    }
 }
-.bottom_nav li:visited{
-	border-bottom: 2px solid rgb(254,148,148);
+
+@media  screen and (min-width: 570px) and (max-width: 768px)
+{
+    .bottom_nav li span
+    {
+
+
+		position: relative;
+		left: 2;
+		font-size: 1.5em;
+
+	}
 }
-@media only screen and (min-width: 760px) and (max-width:768px) {
-	.bottom_nav li img{
-	margin-top: 10%;
+
+@media  screen and (min-width: 380px) and (max-width: 570px) 
+{
+   .bottom_nav li span
+    {
+		margin-left: 36%;
+	}
 }
-.bottom_nav li span{
-	font-size: 1.2em;
-	color: #000000;
- }
+
+@media  screen  and (width: 320px) 
+{
+   .bottom_nav li span
+    {
+		margin-left: 31%;
+	}
 }
 /*团购详情顶部部分*/
 .sales_top{
@@ -310,6 +367,10 @@ border-bottom: 2px solid rgb(254,148,148);
    color:gray;
    font-weight: bold;
 
+
+}
+.star{
+	color:gray;
 }
 /*图片详情*/
 .link{
@@ -355,26 +416,196 @@ border-bottom: 2px solid rgb(254,148,148);
 }
 .bdsharebuttonbox{
 	width:100%;
-	height:30px;
-	line-height:30px;
+	height:40px;
+	line-height:40px;
 	background-color: #eee;
-}
-.bdsharebuttonbox a{
-	width:14%;
 }
 .baidu_share{
 	height: 60px;
 	width: 100%;
 	z-index: 9999;
 	position:fixed;
-	bottom:0;
+	bottom:8px;
 	display: none;
 }
 .baidu_share p{
 	display: inline-block;
 	width: 100%;
 	height: 30px;
+	position: relative;
+	top:-6px;
 	text-align: center;
 	line-height: 30px;
 	background-color: #fff;
+}
+/*提交订单部分*/
+.indent{
+	position: relative;
+	top:50px;
+	padding: 10px;
+	width: 100%;
+	max-width: 768px;
+}
+.indent p{
+    height: 40px;
+    width: 100%;
+    line-height: 40px;
+    padding-left: 10px;
+    background-color: #fff;
+    border: 1px solid gray;
+    position: relative;
+}
+.indent h4{
+	height: 40px;
+	width: 100%;
+	padding-left: 10px;
+	line-height: 40px;
+	background-color: #fff;
+}
+.indent .btn_indent{
+	max-width: 768px;
+	position: fixed;
+	bottom:10px;
+	width:93%;
+	margin-right:10px;
+	background-color:#000;
+	text-align: center;
+}
+.indent .btn_indent input{
+	color:#fff;
+	width: 100%;
+	line-height: 30px;
+	height: 30px;
+	outline: none;
+	border:none;
+	background-color:#000;
+}
+.indent .reduce_normal,.add_normal{
+	float: left;
+	height: 25px;
+	width: 25px;
+	position: relative;
+	top:8px;
+	margin-left: 10px;
+} 
+.numbers1{
+	float: left;
+}
+.indent .numbers2{
+	width: 40px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	border:none;
+	outline:none;
+	position:relative;
+	top:-2px;
+	left:2px;
+	border-bottom:1px solid gray;
+}
+#num_all{
+	position:relative;
+	left: 10px;
+	top:26px;
+	width:44px;
+	height:6px;
+	border-left: 1px solid gray;
+	border-right: 1px solid gray;
+}
+#num_all input{
+	position:relative;
+	top:-30px;}
+.indent .fp{
+	color:red;
+	font-weight: bold;
+	font-size:18px;
+}
+.tel_num,.bind{
+	height: 30px;
+	font-size:14px;
+	line-height: 30px;
+	border:none;
+	outline: none;
+}
+.indent .bind {
+	float: right;
+	height: 26px;
+	line-height:26px;
+	margin:7px 10px 0 0;
+	background-color: red;
+	width: 100px;
+	font-size: 12px;
+	font-weight: bold;
+	color:white;
+	text-align: center;
+}
+.indent .your_num
+  { display: inline-block;
+	width: 100%;
+	height: 40px;
+	border:none;
+	margin:5px 0 5px 0;
+	background-color: #bbb;
+}
+/*确认支付的样式部分*/
+.pay_list{
+	padding: 5px;
+	position:relative;
+	top:50px;
+	max-width: 768px;
+	width: 100%;
+}
+.pay_list p{
+	height: 40px;
+	width: 100%;
+	position: relative;
+	line-height: 40px;
+	padding-left:10px;
+	border:1px solid gray;
+	background-color:#fff;
+
+}
+.pay_list .pay_h4{
+	height: 40px;
+	width: 100%;
+	position: relative;
+	line-height: 40px;
+	padding-left:10px;
+	border:1px solid gray;
+	background-color:#fff;
+}
+.pay_list p .pay_right,.pay_num,.pay_all{
+	position: absolute;
+	right: 20px;
+}
+
+.pay_list p img{
+	float: left;
+	height:40px;
+	width: 40px;
+}
+.web_pay{
+    font-size: 14px;
+    position: relative;
+    top:-10px;
+}
+.web_pay1{
+    font-size: 12px;
+    color:gray;
+    position: relative;
+    top:-35px;
+    left:40px;
+}
+.web_pay2{
+	font-size: 14px;
+}
+.radio1,.radio{
+	position: absolute;
+	top:15px;
+	right: 10px;
+}
+.pay_list .pay_ways{
+   background-color: #bbb;
+   border:none;
+   margin-top:5px;
 }
