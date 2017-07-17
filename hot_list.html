@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-	
-		<title>热卖</title>
-		<meta charset="UTF-8">
-		<meta name="format-detection" content="telephone=no"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximun-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
-		<meta name="apple-mobile-web-app-capable" content="yes"/>
-		<meta name="apple-touch-fullscreen" content="yes"/>
-		<meta http-equiv="Access-Control-Allow-Origin" content="*"/>
-		<link rel="stylesheet" type="text/css" href="css/hot_list.css">
+  
+    <title>热卖</title>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximun-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta http-equiv="Access-Control-Allow-Origin" content="*"/>
+    <link rel="stylesheet" type="text/css" href="css/hot_list.css">
+    
+    <style type="text/css">
+
+    </style>
 </head>
 <body>
      <div id="app">
-	     <component v-bind:is="view"></component>
+       <component v-bind:is="view"></component>
      </div>
 
 
@@ -35,7 +39,7 @@
             <img v-bind:src="'http://juhuituan.boguyuan.com/juhuituan'+item.img" alt="">
             <div class="right">
              <h4 class="tit">{{item.ti}}</h4>
-             <p>{{item.con}}</p>
+             <p class="hot_con">{{item.con}}</p>
              <span class="fpri">{{item.fpri}}</span>
              <span class="line">/</span>
              <span class="pri">{{item.pri}}</span>
@@ -46,27 +50,57 @@
          </ul>
       </div>
       <div class="bottom_nav container">
-      <ul>
-        <a href="javascript:;"><li class="naver"><img src="img/tg_select.png" class="img-responsive navImg"/><span>团购</span></li></a>
-        <a href="javascript:;" id="hot_sale"><li class="naver"><img src="img/rm_normal.png" class="img-responsive navImg"/><span>热卖</span></li></a>
-        <a href="javascript:;"><li class="naver"><img src="img/merchant_icon_normal.png" class="img-responsive navImg"/><span>逛街</span></li></a>
-        <a href="javascript:;"><li class="naver"><img src="img/user_normal.png" class="img-responsive navImg"/><span>我的</span></li></a>
-        <a href="javascript:;"><li class="naver"><img src="img/more_normal.png" class="img-responsive navImg"/><span>更多</span></li></a>
-      </ul>
-    </div>
+    <ul>
+      <a href="index.html">
+        <li class="">
+          <img src="img/tg_normal.png" class=""/>
+          <span>团购</span>
+        </li>
+      </a>
+
+      <a href="hot_list.html">
+        <li class="naver">
+          <img src="img/rm_select.png" class=""/>
+          <span>热卖</span>
+        </li>
+      </a>
+
+      <a href="Shopping.html">
+        <li class="">
+          <img src="img/merchant_icon_normal.png" class=" "/>
+          <span>逛街</span>
+        </li>
+      </a>
+
+      <a href="my/login home.html">
+        <li class="">
+          <img src="img/user_normal.png" class="img-responsive navImg"/>
+          <span>我的</span>
+        </li>
+      </a>
+
+      <a href="more.html">
+        <li class="">
+          <img src="img/more_normal.png" class=" navImg"/>
+          <span>更多</span>
+        </li>
+      </a>
+    </ul>
+  </div>
+
      </script>
      <!-- 团购详情部分 -->
   <script type="text/template" id="list">
     <div class="sales_top"> 
-  	   <a href="javascript:;"onclick="javascript:history.back(-1);">
+       <a href="javascript:;"onclick="javascript:history.back(-1);">
        <img src="img/nav_back.png" class="back"></a>
-  	   <img src="img/nav_icon.png" class="middle">
-  	    <span>团购详情</span>
+       <img src="img/nav_icon.png" class="middle">
+        <span>团购详情</span>
        <a href="javascript:;" id="share" v-on:click="share()">
        <img src="img/share.png" class="share"></a>
        <a href="javascript:;">
        <img src="img/uncollect.png" class="select"></a>
-  	</div>
+    </div>
       
       <div class="sales_bottom">
          <ul>
@@ -77,7 +111,8 @@
                    <span class="fpri">¥{{data.fpri}}</span>
                     <span class="line">/</span>
                    <span class="pri">{{data.pri}}</span>
-                   <a href="javascript:;" class="shop_right">立即抢购</a>
+                   <a href="#shop_list" class="shop_right" 
+                   v-on:click="clickShop(data.fpri,data.ti)">立即抢购</a>
                  </div>
                  <div class="date">
                    <p><img src="img/un.png" alt="">
@@ -101,7 +136,7 @@
                  <p><span class="merchant">消费提醒</span><br>
                  <textarea disabled="disabled" class="textarea_last">{{data.xcon}}</textarea></p>
                  <p class="merchant">用户评价
-                 <span>★★★★★</span><span>0.0分</span>
+                 <span class="star">★★★★★</span><span>0.0分</span>
                  <span>{{data.num}}人评价</span></p>
                 </a>
               </li>
@@ -127,34 +162,127 @@
               <p><span class="f">{{item.fpri}}</span>
               <span class="l">/</span>
               <span class="p">{{item.pri}}</span>
-              <a href="javascript:;">立即抢购</a>
+              <a href="#shop_list" v-on:click="">立即抢购</a>
               </p>
             </div>
           </li>
         </ul>
       </div>
     </script>
+
+      <!-- 订单提交部分 -->
+      <script type="text/template" id="shop_list">
+        <div class="image_text">
+          <ul>
+           <li v-for="item in data">
+           <div class="sales_top">
+             <a href="javascript:;" onclick="javascript:history.back(-1);">
+               <img src="img/nav_back.png" class="back" alt="">
+             </a>
+              <img src="img/nav_icon.png" class="middle" alt="">
+               <span class="pic">提交订单</span>
+           </div>
+          
+            
+            <div class="indent" id="indent">
+              <h4>项目&nbsp;{{item.ti}}</h4>
+              <p>单价&nbsp;¥{{item.fpri}}</p>
+
+
+              <p><span class="numbers1">数量</span>
+              <a href="javascript:;" v-on:click="reduce()">
+              <img src="img/reduce_normal.png" alt="" 
+              class="reduce_normal">
+              </a>
+              <span class="numbers1" id="num_all">
+              <input type="num" value="1" class="num numbers2" 
+              disabled="disabled"></span>
+              <a href="javascript:;" v-on:click="add()">
+              <img src="img/add_normal.png" alt=""
+               class="add_normal"></a></p>
+              <p>总价
+              <span class="fp">&nbsp;¥<input type="" v-model="item.all" style="height: 30px;line-height: 30px;color:red;border: none;font-size: 18px;font-weight: bold;" disabled="disabled" class="num1"></span></p>
+              <p class="your_num"><strong >您的手机号</strong></p>
+              <p><input type="number" name="" class="tel_num">
+              <a href="javascript:;" class="bind">
+              绑定新手机号</a></p>
+              <p class="btn_indent">
+              <a href="#true_pay" v-on:click="indent(num,num1)">
+              <input type="submit" value="提交订单"></a></p>
+            </div>
+            
+           
+          </li>
+        </ul>
+      </div>
+    </script>
+      <!-- 订单详情结束 -->
+       
+      <!-- 确认支付开始页面 -->
+        <script type="text/template" id="true_pay">
+            <div class="image_text">
+             <ul>
+               <li v-for="item in data">
+                <div class="sales_top">
+                  <a href="javascript:;" onclick="javascript:history.back(-1);">
+                   <img src="img/nav_back.png" class="back" alt="">
+                  </a>
+                   <img src="img/nav_icon.png" class="middle" alt="">
+                    <span class="pic">确认支付</span>
+                </div>
+           
+                <div class="pay_list">
+                 <form accept="" method="">
+                 <h4 class="pay_h4">项目{{item.ti}}</h4>
+                 <p>单价<span class="pay_right">¥{{item.fpri}}</span></p>
+                 <p>数量
+                 <span class="pay_num">{{item.nu}}</span></p>
+                 <p>总价
+                 <span class="pay_all" style="color:red;font-weight: bold;font-size:18px;">¥{{item.nu1}}</span></p>
+                 <p class="pay_ways">选择支付方式结算</p>
+                 <p style="border:none;background-color:#ccc;margin-top:10px;">
+                 <img src="img/zfb_icon.png" alt="">
+                 <span class="web_pay">支付宝网页支付</span><br>
+                 <span class="web_pay1">支付宝账户支付、银行卡支付</span>
+                 <input type="radio" name="radio" class="radio1" value="">
+                 </p>
+                 <p style="border:none;background-color:#ccc;margin-top:10px;">
+                 <img src="img/yl_icon.png" alt="">
+                 <span class=".web_pay2">各大银行无卡支付、快捷支付</span>
+                 
+                 <input type="radio" name="radio" class="radio" value="">
+                 </p>
+                 <p style="background-color:black;position: fixed;bottom:0px;text-align:center;width: 97%;max-width: 768px;">
+                 <input type="submit" value="确认支付" style="color:white;height: 30px;line-height: 30px;font-weight: bold;background-color:black;font-size:18px;border:none;"></p>
+                 </form>
+                </div>
+               </li>
+             </ul>
+           </div>
+        </script>
+     <!-- 确认支付页面结束 -->
 <div class="baidu_share">
 <!-- 分享部分开始 -->
 <div class="bdsharebuttonbox">
-<a href="#" class="bds_more" data-cmd="more"></a>
-<a href="#" class="bds_qzone" data-cmd="qzone"></a>
-<a href="#" class="bds_tsina" data-cmd="tsina"></a>
-<a href="#" class="bds_tqq" data-cmd="tqq"></a>
-<a href="#" class="bds_renren" data-cmd="renren"></a>
-<a href="#" class="bds_weixin" data-cmd="weixin"></a>
+   <a href="#" class="bds_more" data-cmd="more" ></a>
+     <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信" style="margin-left:26px"></a>
+     <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博" style="margin-left:26px"></a>
+     <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友" style="margin-left:26px"></a>
+     <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博" style="margin-left:26px"></a>
+     <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间" style="margin-left:26px"></a>
 </div>
 <p id="cancel" click="cancel()">取消</p>
 </div>
 <script>
 window._bd_share_config=
 {"common":
-{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"32"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
 <!-- 分享部分结束 -->
 
 </div>
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="js/vue.js"></script>
 <script type="text/javascript" src="js/hot_list.js"></script>
+
 </body>
 </html>
