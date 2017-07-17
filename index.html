@@ -54,7 +54,7 @@
 	        <!--类目列表开始-->
 	        <div class="list">
 	        	<ul class="clearfix types">
-	        		<li v-for="item in types" style="float: left;" @click="clicks(item.Ids)">
+	        		<li v-for="item in types" style="float: left;" @click="clicks(item.Ids),All_type()">
 	        			<a href="#list/type/{{item.id}}?pid={{item.Ids}}"><!--加载类型模板-->
 	        				<img src="{{item.url}}" alt=""/>
 	        				<span>{{item.title}}</span>
@@ -70,10 +70,11 @@
 	        </div>
 	        <div class="hot_sell">
 	        	<div class="head">
-	        		<div class="all_sell">
+	        		<a href="#list">
+	        		<div class="all_sell" @click="All_type()">
 	        			<span>热门团购</span><span class="all">全部团购></span>
 	        		</div>
-	        		
+	        		</a>
 	        		
 	        		<!--团购列表-->
 	        		<ul class="clearfix product">
@@ -117,20 +118,57 @@
 	        		<img src="img/icon_search.png" class="img-responsive" id="add"/>
 	        	</div>
 	        	
+	        	
 	        	<div class="type">
-	        		<div class="T_left">{{}}</div>
-	        		<div class="T_right">{{}}</div>
+	        		<div class="T_left" @click="Xianshi()">{{}}</div>
+	        		<div class="T_right" @click="Right()">
+	        			<img src="img/sort.png" class="img-responsive"/>
+	        			<div class="sort">
+	        				
+	        			</div>
+	        		</div>
 	        	</div>
 	        	
-	        	<li v-for="item in goods" class="affixs">
-	        		<img src="{{item.img}}"/>
+	        	<!--第二页所有类型-->
+	        		<div class="all_types">
+	        			<ul class="all_type">
+	        			   <li v-for="item in all_Type">
+	        			   	<img src="{{item.img}}" class="img-responsive"/>
+	        			   	<div>
+	        			   		{{item.ti}}
+	        			   	</div>
+	        			   	<div class="">
+	        			   		({{item.tnum}})
+	        			   	</div>
+	        			   </li>
+	        		    </ul>
+	        		    
+	        		    <ul class="E_type">
+	        			   <li></li>
+	        		    </ul>
+	        		</div>
+	        		<!--第二页所有类型-->
+	        		
+	        		<ul class="sort_ul">
+	        			<a href="#list">
+	        			<li @click="Sort()">默认排序</li>
+	        			</a>
+	        			<li @click="Sell_sort()">销量最高</li>
+	        			<li @click="P_sort()">价格最高</li>
+	        			<li @click="Fp_sort()">价格最低</li>
+	        		</ul>
+	        	
+	        	<a href="#product/{{item.id}}">        	
+	        	<li v-for="item in goods" class="affixx" @click="">	    
+	        		<img src="{{item.img}}" class="img-responsive"/>
 	        		<div>{{item.title}}</div>
 	        		<p>{{item.con}}</p>
-	        		<span>{{item.fpri}}</span>/
+	        		<span>{{item.fpri}}&nbsp;/</span>
 	        		<span>{{item.pri}}</span>
-	        		<span>{{item.num}}</span>人
+	        		<span>{{item.num}}人</span>	        		
 	        	</li>
-		         
+		       </a>
+		       
 	        </section>
         </script>
         
@@ -146,28 +184,28 @@
 	    </div>
 	    <div v-for="item in details" class="affixs">
 	    <img v-bind:src="item.imgs" class="img-responsive"/>
-	    <div class="Q_gou" style="height: 10%;">
+	    <div class="Q_gou">
 	    	<span>{{item.fpri}}</span>/
 	        <span>{{item.pri}}</span>
 	        <span><a href="#indent">立即购买</a></span>
 	    </div>
 	    <div class="dates">
 	    	<span><img src="img/people.png"/>{{item.num}}人</span>
-	    	<span><img src="img/clock.png"/>{{item.dt}}</span>
+	    	<span><img src="img/clock.png"/>截止日期{{item.dt}}</span>
 	    </div>
 	    <h4>{{item.ti}}</h4>
-	    <div>{{item.con}}</div>
-	    <div class="">商家信息</div>
-	    <div class="">{{item.jcon}}</div>
-	    <div class="">套餐内容</div>
-	    <div class="">{{item.scon}}</div>
-	    <div class="">
+	    <div class="ct">{{item.con}}</div>
+	    <div class="gray">商家信息</div>
+	    <textarea class="">{{item.jcon}}</textarea>
+	    <div class="gray">套餐内容</div>
+	    <textarea class="">{{item.scon}}</textarea>
+	    <div class="xiang">
 	    	<span id="">查看图文详情</span>
-	    	<span id=""><img src="img/arrow_icon.png"/></span>
+	    	<span id="you"><img src="img/arrow_icon.png"/></span>
 	    </div>
-	    <div class="">消费提醒</div>
-	    <div class="">{{item.xcon}}</div>
-	    <div class="">
+	    <div class="gray">消费提醒</div>
+	    <textarea class="">{{item.xcon}}</textarea>
+	    <div class="gray">
 	    	<span id="">用户评价</span>
 	    	<span id="">
 	    		<img src="img/star_empty.png"/>
@@ -188,7 +226,7 @@
 	   <script type="text/template" id="search_list">
 	<section class="list-page">
 		<div class="active">
-	        		<img src="img/nav_back.png" class="img-responsive" id="ad"/>
+	        		<img src="img/nav_back.png" class="img-responsive" class="ad"/>
 	        		<img src="img/nav_icon.png" class="img-responsive" id="adx"/>	        		
 	        		<span class="title">{{types.title}}</span>
 	        		<img src="img/uncollect.png" class="img-responsive" id="adds"/>
@@ -206,18 +244,34 @@
         <script type="text/template" id="indent_list">
 	<section class="list-page">
 		<div class="active">
-	        		<img src="img/nav_back.png" class="img-responsive" id="ad"/>
+	        		<img src="img/nav_back.png" class="img-responsive" class="ad"/>
 	        		<img src="img/nav_icon.png" class="img-responsive" id="adx"/>	        		
 	        		<span class="titles">提交订单</span>
 	        				      
 	    </div>
 	    
 	    <div class="indent">
-	    	<ul class="list_sell">
-    			<li>项目</li>
-    			<li>单价</li>
-    			<li>数量</li>
-    			<li>总价</li>
+	    	<ul class="list_sell" v-for="item in Dingdan">
+    			<li>
+    			    <div style="margin: 6% 3%;">项目</div>	
+	    			<div class="T_dd">{{item.ti}}</div>
+    			</li>
+    			<li>
+    				<span class="danjia">单价</span>
+    				<div class="T_dd  t_dd">{{item.pri}}</div>
+    			</li>
+    			<li>
+    				<span class="danjia">数量</span>
+    				<div class="shl">
+    					<div class="jiajian jian" style="background: white;color: red;" @click="minus(num)">-</div>
+    					<div id="D_num">{{item.id}}</div>
+    					<div class="jiajian jia" style="background: red;color: white;" @click="add(num)">+</div>
+    				</div>
+    			</li>
+    			<li>
+    				<span class="danjia">总价</span>
+    				<div id="zj">...￥</div>
+    			</li>
 			</ul>
 	    </div>
 	    <div class="tel">您的手机号</div>
@@ -233,5 +287,40 @@
 <!--订单提交模板-->
 	<script type="text/javascript" src="js/vue.js"></script>
 	<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+	
+	
+	<div class="bdsharebuttonbox">
+	<a href="#" class="bds_more" data-cmd="more">分享到：</a>
+	<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a>
+	<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a>
+	<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a>
+	<a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a>
+	<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a>
+</div>
+<script>
+window._bd_share_config = {
+    "common": {
+        "bdSnsKey": {},
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": "",
+        "bdStyle": "0",
+        "bdSize": "16"
+    },
+    "share": {
+        "bdSize": 16
+    },
+    "image": {
+        "viewList": ["qzone", "tsina", "tqq", "renren", "weixin"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+    },
+    "selectShare": {
+        "bdContainerClass": null,
+        "bdSelectMiniList": ["qzone", "tsina", "tqq", "renren", "weixin"]
+    }
+};
+with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~ ( - new Date() / 36e5)];</script>
 	</body>
 </html>

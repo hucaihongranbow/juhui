@@ -2,6 +2,9 @@
 	margin: 0;
 	padding: 0;
 }
+li{
+	list-style: none;
+}
 html,body{
 	width: 100%;
 	height: 100%;
@@ -10,12 +13,13 @@ html,body{
 body{
 	margin: 0 auto;
 	min-width: 320px;
+	background-color: rgb(250,250,250);
+	/*background: red;*/
 }
 .h_content{
 	width: 100%;
 	height: 100%;
-	position: relative;
-	background-color: rgb(250,250,250);
+	position: relative;	
 }
 .container{
 	padding: 0;
@@ -30,7 +34,6 @@ body{
 	left: 0;
 	top: 0;
 	z-index: 999;
-		/*margin-bottom: 150px;*/
 }
 .text{
 	display: table-cell;
@@ -53,7 +56,6 @@ body{
 .body{
 	width: 100%;
 	height: 200%;
-	background: yellowgreen;
 }
 .h_input{
 	width: 60%;
@@ -107,6 +109,52 @@ body{
 	height: auto;
 	/*margin-top: 5%;*/
 	/*background: red;*/
+}
+
+.sort{
+	width: 70%;
+	height: 90%;
+	border: solid 1px blue;
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+/*所有类型列表*/
+.all_types{
+	width: 100%;
+	height: 60%;
+	border: solid 1px blueviolet;
+    position: relative;
+    display: none;
+}
+
+.all_type,.E_type{
+	width: 50%;
+	height: 100%;
+	border: solid 1px greenyellow;
+	float: left;
+}
+
+.all_type li,.E_type li{
+	height: 11%;
+	width: 100%;
+	border: solid 1px royalblue;
+}
+
+.all_type li img{
+	display: block;
+	float: left;
+	height: 80%;
+}
+.all_type li div{
+	width: auto;
+	float: left;
+}
+
+.all_type li{
+	float: left;
 }
 
 .lb_li img{
@@ -165,7 +213,50 @@ body{
 	position: relative;
 	left: 25%;
 }
-.product img{
+
+.affixx{
+	padding: 2%;
+	width: 95%;
+	margin: 0 auto;
+	height: auto;
+	border: solid 1px darkgrey;
+	position: relative;
+	margin-bottom: 2%;
+	background: white;	
+}
+
+.affixx div,.affixx p,.affixx span{
+	position: absolute;
+	left: 35%;
+	top: 70%;
+	overflow:hidden; 
+	text-overflow:ellipsis;
+	display:-webkit-box; 
+	-webkit-box-orient:vertical;
+	-webkit-line-clamp:2;
+}
+
+.affixx div:nth-child(2){
+	top: 4%;
+}
+
+.affixx p:nth-child(3){
+	top: 25%;
+}
+
+.affixx span:nth-child(5){
+	left: 50%;
+}
+
+.affixx span:nth-child(6){
+	left: 90%;
+}
+
+.affixx p:nth-child(3){
+	
+}
+
+.product img,.affixx img{
 	width: 30%;
 }
 .product li{
@@ -175,14 +266,30 @@ body{
 	position: relative;
 	border: solid 1px rgb(204,204,204);
 }
+
+
+.sort_ul{
+	/*display: none;*/
+	float: right;
+}
 .product div{
 	color: rgb(163,163,163);
 	width: 65%;
 	position: absolute;
 	left: 35%;
 	top: 0;
+	overflow:hidden; 
+	text-overflow:ellipsis;
+	display:-webkit-box; 
+	-webkit-box-orient:vertical;
+	-webkit-line-clamp:2;
+
 }
-.product div:nth-child(3){
+
+.product .content{
+	top: 25%;
+}
+.product div:nth-child,.affixx p(3){
 	color: rgb(198,198,198);
 	top: 25%;
 }
@@ -255,14 +362,12 @@ body{
 	width: 100%;
 	height: 7%;
 	border: solid 1px red;
-	margin-top: 8%;
+	margin-top: 9%;
 }
 section{
 	height: 100%;
-	border: solid 1px deepskyblue;
 	position: relative;
 }
-
 .T_left,.T_right{
 	width: 50%;
 	height: 100%;
@@ -272,17 +377,99 @@ section{
 	background-image: url(../img/cate_normal.png);
 	background-size: 100%,100%;
 }
-.affixs{
-	width: 95%;
-	height: 15%;
-	border: dashed 1px rosybrown;
-	margin: 0 auto;
-}
-.Q_gou{
-	height: 10%;
-	background-color: white;
+
+.T_left img,.T_right img{
+	height: 80%;
 }
 
+.affixs{
+	width: 100%;
+	height: 15%;
+	margin: 0 auto;
+}
+
+.affixs img{
+	width: ;
+}
+
+.Q_gou{
+	height: 35px;
+	line-height: 35px;
+	background-color: white;
+	position: relative;
+}
+
+.Q_gou span:nth-child(1){
+	margin-left: 1%;
+}
+
+.Q_gou span:nth-child(3){
+	display: inline-block;
+	position: absolute;
+	font-size: 1.5em;
+	color: white;
+	right: 1%;
+	margin-top: 1%;
+	height: 80%;
+	padding: 0 1%;
+	line-height: 30px;
+	border-radius: 5px;
+	background: rgb(254,148,148);	
+}
+
+.dates{
+	height: 30px;
+	line-height: 30px;
+	width: 100%;
+}
+.dates img{
+	height: 50%;
+}
+
+.dates span:nth-child(1){
+	position: relative;
+	left: 2%;
+}
+
+.dates span:nth-child(2){
+	position: relative;
+	left: 45%;
+}
+
+.affixs div{
+	padding-left: 2%;
+}
+
+textarea{
+	margin-left: 3%;
+	width: 99%;
+}
+
+.gray{
+	width: 100%;
+	height: 20px;
+	background: gainsboro;
+	line-height: 20px;
+}
+
+.gray img{
+	height: 50%;
+	vertical-align: middle;
+}
+
+.xiang{
+	color: red;
+}
+
+#you{
+	position: absolute;
+	left: 90%;
+	
+}
+
+#you img{
+	height: 90%;
+}
 
 /*订单提交*/
 .indent{
@@ -316,18 +503,28 @@ section{
 }
 .bind{
 	background: rgb(255,97,96);
-	width: 25%;
+	width: 30%;
 	height: 60%;
-	margin-left:28%;
+	margin-left:25%;
 	float: left;
+	text-align: center;
 }
 .list_sell{
 	width: 100%;
 	height: 100%;
 }
+.list_sell{
+	vertical-align: middle;
+}
+
+.list_sell li{
+	font-size: 1.5em;
+}
 .list_sell li:nth-child(1){
 	height: 30%;
 	width: 100%;
+	font-size: 1.5em;
+	font-weight: bold;
 	border-bottom: solid 1px gray;
 }
 .list_sell li:nth-child(2),.list_sell li:nth-child(3),.list_sell li:nth-child(4){
@@ -336,6 +533,53 @@ section{
 	border-bottom: solid 1px gray;
 }
 .list_sell li:nth-child(4){border-bottom: 0}
+
+.list_sell li span,.list_sell li div{
+	float: left;
+	display: inline-block;
+}
+
+.list_sell li .T_dd,#zj{	
+	width: 70%;
+	height: 70%;
+	border: solid 1px red;
+	margin: 3%;
+	position: relative;
+	left: 1%;
+} 
+.shl,#zj{
+	position: relative;
+	left: 22%;
+	margin: 3%;
+}
+
+.shl{
+	width: 30%;
+}
+
+
+.danjia{
+	position: absolute;
+	left: 3%;
+	margin-top: 5%;
+}
+.jiajian{
+	width: 20px;
+	height: 20px;
+	border-radius: 10px;
+	background: red;
+	text-align: center;
+    line-height: 20px;
+    font-weight: bold;
+    box-shadow: 0 1px 1px 0 gray;
+}
+
+#D_num{
+	width: 60%;
+	height: 80%;
+	text-align: center;
+}
+
 .submit{
 	width: 92%;
 	height: 5%;
