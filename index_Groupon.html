@@ -10,8 +10,10 @@
 	<meta name="apple-mobile-web-app-capable" content="yes"/>
 	<meta name="apple-touch-fullscreen" content="yes"/>
 	<meta http-equiv="Access-Control-Allow-Origin" content="*"/>
-
+    
+    
 	<link rel="stylesheet" type="text/css" href="css/Groupon.css"/>
+
 
 </head>
 <body>
@@ -25,6 +27,7 @@
 <!-- 模板一 首页-->
 <script type="text/template" id="home">
 <div class="home-page">
+    <!-- <img src=""> 入口动画-->
 
     <div class="top">
     	<img src="img/home_logo.png">
@@ -39,7 +42,7 @@
     </div>
     
     <!-- //广告 轮播  跳到商品详情-->
-    <div class="banner_bg">
+    <div class="banner_bg" >
 	    <ul class="banner">
 	        <!-- <a href="#"> -->
 				<li v-for="itm in banner.items" v-on:click="clickId(itm.inid)">
@@ -53,8 +56,15 @@
     
     <!-- 跳到所有商品 分类-->
 	<ul class="ad">
-		<li v-for="itm in ad.items" v-bind:data="itm.id"  v-on:click="classify_list_id(2,itm.id)">
+		<li v-for="itm in ad"   v-on:click="classify_list_id(2,itm.id,itm.img,itm.ti)">
 		    <a href="#list/id/{{itm.id}}">
+				<img v-bind:src="'http://juhuituan.boguyuan.com/juhuituan'+itm.img">
+				<p>{{itm.ti}}</p>
+			</a>
+		</li>
+
+		<li v-for="itm in more">
+		    <a href="#more">
 				<img v-bind:src="'http://juhuituan.boguyuan.com/juhuituan'+itm.img">
 				<p>{{itm.ti}}</p>
 			</a>
@@ -67,7 +77,7 @@
 
 	    <!-- 跳到所有商品-->
 	    <a href="#/list/all" v-on:click="all_list_id(1)">
-	    	<div>热门
+	    	<div class="hot">热门
 		        <span>全部团购</span>
 		    </div>
 	    </a>
@@ -75,12 +85,65 @@
 	    <!-- //商品列表  跳到商品详情-->
 		<li v-for="itm in list.items" v-on:click="clickIndex(itm.id)">
 		    <a href="#/product/{{itm.id}}">
+
 				<img v-bind:src="'http://juhuituan.boguyuan.com/juhuituan'+itm.img">
-			</a>
+                
+                <!-- <div class="list_content"> -->
+					<p>{{itm.ti}}</p>
+
+					<p>{{itm.con}}</p>
+
+					<P class="mation">
+						<span>￥{{itm.fpri}}</span>
+					    <span>/</span>
+					    <span>{{itm.pri}}</span>
+
+					    <span>{{itm.num}}人</span>
+					</P>
+				
+		    </a>
+			
 		</li>
 	</ul>
 
-	<div class="footer bottom">底部导航</div>
+	<div class="bottom_nav">
+		<ul>
+			<a href="index.html">
+				<li class="naver">
+					<img src="img/tg_select.png" class=""/>
+					<span>团购</span>
+				</li>
+			</a>
+
+			<a href="hot_list.html">
+				<li class="">
+					<img src="img/rm_normal.png" class=""/>
+					<span>热卖</span>
+				</li>
+			</a>
+
+			<a href="Shopping.html">
+				<li class="">
+					<img src="img/merchant_icon_normal.png" class=" "/>
+					<span>逛街</span>
+				</li>
+			</a>
+
+			<a href="my/login home.html">
+				<li class="">
+					<img src="img/user_normal.png" class="img-responsive navImg"/>
+					<span>我的</span>
+				</li>
+			</a>
+
+			<a href="more.html">
+				<li class="">
+					<img src="img/more_normal.png" class=" navImg"/>
+					<span>更多</span>
+				</li>
+			</a>
+		</ul>
+	</div>
 
 </div>
 </script>
@@ -89,12 +152,114 @@
 <!-- // 模板二 所有商品列表分类-->
 <script type="text/template" id="list">
 <div class="list-page">
-	    <div>商品列表</div>
+	    <div class="list_top">
+	        <!-- 商品列表 -->全部分类
+	
+            <!-- 返回上一层 -->
+		    <a href="#home">
+		    	<img src="img/nav_back.png" class="back" >
 
-	    <a href="#seach">
-	    	<div>搜索<input type="" name=""></div>
-	    </a>
+			    <img src="img/nav_icon.png" class="logo" >
+		    </a>
 	    
+		    
+
+		    <a href="#seach">
+		    	<img src="img/icon_search.png" class="seach">
+		    </a>
+	    </div>
+        
+        <!-- 分类 排序 -->
+        <div class="list_bg">
+	       <div class="list_title">
+
+		    	<!-- 左：分类       右 排序 -->
+	    	    <!-- // 点谁传谁 -->
+	    	    <li v-for="itm in ti_img" class="all_cate" >
+	    	        <!-- 分类默认 -->
+	    	        <div  v-on:click="toggle" class="dr">
+	    	        	<img v-bind:src="itm.img">
+	    		        <span class="ti">{{itm.ti}}</span>
+	    	        </div>
+	    	    	
+
+	    		    
+	    	    </li>
+		    		
+	                
+	                
+		    	
+	            <!-- 右 排序 -->
+		    	<li class="all_sort">
+		    		<div  v-on:click="toggle_sort" class="sort_bg">
+	    	        	<img src="img/sort.png">
+	    		        <span class="ti">默认分类</span>
+	    	        </div>
+                    
+                    
+	    	        
+		    	</li>
+	       </div>
+	    </div>
+
+	    <!--分类  // 创建 传参 到上面 -->
+		<ul class="cate_bg">
+		    <!-- 全部分类 73-->
+		    <div class="first" style="position: relative;" >
+    			<li class="all_top" v-on:click="toggle_1" style="background-color: #fff;">
+    				<img v-bind:src="top_img">
+    				<span>全部分类({{all.num}})</span>
+    			</li>
+                
+                 <!-- 第一级 具体分类   传到第二级 大类 总数-->
+    			<li v-for="itm in all.items" v-on:click ="sub_cate(itm.id,itm.tnum,itm.ti,itm.img)" class="cate_cont">
+    			
+
+                    <!-- 内部click -->
+    				<img v-bind:src="'http://juhuituan.boguyuan.com/juhuituan' +itm.img ">
+    				<!-- 大类 总数量 -->
+    				<span>{{itm.ti}} ({{itm.tnum}})</span>
+    			</li>
+			</div>
+            
+            <!-- 二级分类 -->
+			<ul class="sub_cate">
+			    <!-- 顶 全部 -->
+				<li> 
+					<!-- 大类 总数量 -->
+				    <span>全部 ({{num}})</span>
+				</li>
+                
+                <!-- 具体分类 -->
+
+                <!-- 隐藏 数据 -->
+                <li v-for="itm in sub_all.items">
+                    <!-- // 小类              数量-->
+                	<span>{{itm.ti}} ({{itm.count}})</span>
+                </li>
+
+			</ul>
+
+		</ul>
+
+	    <!-- 排序 -->
+	    <div class="sort_way">
+        	<ul>
+	        	<li>默认排序</li>
+	        	<li>销量最高</li>
+	        	<li>价格最低</li>
+	        	<li>价格最高</li>
+
+            </ul>
+        </div>
+	    
+
+
+
+
+
+
+
 	    <!-- 商品 -->
 		<ul class="all">
 
@@ -142,7 +307,7 @@
 				    <span>{{itm.pri}}</span>
 
 					<!-- 到订单 -->  
-					                                               <!-- 项目标题  现价 -->
+					                <!-- 项目标题  现价 -->
 	                <a href="#order_form" v-on:click="go_order_form(itm.ti,itm.fpri)">
 	                	<div style="color: red;">立即抢购</div>
 	                </a>
@@ -166,9 +331,9 @@
                 <!-- 到商品 图文详情 -->
                 <div class="image_text">   
 
-                                                                <!-- 传到图文详情           	              -->
+                                        <!-- 传到图文详情  -->
 					<a href="#image_text" v-on:click="clickUrl(itm.weburl,itm.fpri,itm.pri,itm.ti)">
-					                                            <!-- html     原价        标题 -->
+					                   <!-- html     原价        标题 -->
 					查看商品图文详情
 					
 					</a>
@@ -194,162 +359,274 @@
 
 <!-- // 模板四   图文详情-->
 <script type="text/template" id="image_text">
-	<div class="image_text-page">
-		<div class="top_title">
-		图文详情
-		
-        
-	        <!-- 返回上一层 -->
-		    <a href="javascript:;" id="back" v-on:click="back()">
-		    	<img src="img/nav_back.png" class="back" >
+<div class="image_text-page">
+	<div class="top_title">
+	图文详情
+	
+    
+        <!-- 返回上一层 -->
+	    <a href="javascript:;" id="back" v-on:click="back()">
+	    	<img src="img/nav_back.png" class="back" >
 
-			    <img src="img/nav_icon.png" class="logo" >
-		    </a>
-	    
-		</div>
-         
-        <!-- 图文详情展示 -->
-		<ul class="img_txt">
-			<li v-for="itm in img_txt">
-				<iframe v-bind:src="itm.links" scrolling="auto" ></iframe>
-			</li>
-		</ul>
-        
-        <!-- 到订单 -->
-        <!-- <a href="#order_form"> -->
-            <div class="img_txt_order">
-	            <li v-for="itm in img_txt">
-	            	<span>￥{{itm.fpri_}}</span>
-	            	<span>/</span>
-	            	<span>{{itm.pri_}}</span>
-	            </li> 
-	                                  <!-- 标题 单价  传过来 传出去 -->
-	            <a href="#order_form" v-on:click="go_order_form(itm.ti_,itm.fpri_)">立即抢购</a>
-            </div>
-        <!-- </a> -->
+		    <img src="img/nav_icon.png" class="logo" >
+	    </a>
+    
 	</div>
+     
+    <!-- 图文详情展示 -->
+	<ul class="img_txt">
+		<li v-for="itm in img_txt">
+			<iframe v-bind:src="itm.links" scrolling="auto" ></iframe>
+		</li>
+	</ul>
+    
+    <!-- 到订单 -->
+    <!-- <a href="#order_form"> -->
+        <div class="img_txt_order">
+            <li v-for="itm in img_txt">
+            	<span>￥{{itm.fpri}}</span>
+            	<span>/</span>
+            	<span>{{itm.pri}}</span>
+
+            	                      <!-- 标题 单价  传过来 传出去 -->
+                <a href="#order_form" v-on:click="go_order_form(itm.ti,itm.fpri)">立即抢购</a>
+            </li> 
+            
+        </div>
+    <!-- </a> -->
+</div>
 </script>
 
 
-<!-- // 模板五 从图文、商品详情 来到  抢购订单-->
-<script type="text/template" id="order_form">
-	<div class="order_form-page">
-	    
-		<div class="order_form_top">
-		提交订单
-		
-        
-	        <!-- 返回上一层 -->
-		    <a href="javascript:;" id="back" v-on:click="back()">
-		    	<img src="img/nav_back.png" class="back" >
 
-			    <img src="img/nav_icon.png" class="logo" >
-		    </a>
-	    
-		</div>
-
-		
-	    <!-- 订单信息 -->
-	    <div class="indent">
-	        <li v-for="itm in order_form">
-	        	<span>{{itm.ti}}</span>
-    			<span>{{itm.pfri}}</span>
-	        </li>
-
-	    	<ul class="list_sell">
-    			<li>项目</li>
-    			<li>单价</li>
-    			<li>数量</li>
-    			<li>总价</li>
-			</ul>
-	    </div>
-
-	    <!-- <div class="tel">您的手机号</div>
-
-	    <div class="tels">
-	    	<div class="tel_input">
-	    		
-	    	</div>
-	    	<div class="bind">绑定新手机号</div>
-	    </div> -->
-
-
-	    <div class="submit">提交订单</div>
-
-
-
-
-
-	</div>
-</script>
 
 
 <!-- 模板六 搜索 界面-->
 <script type="text/template" id="seach">
-	<div class="seach-page">
-	    <div class="top">
+<div class="seach-page">
+    <div class="top">
 
-	        <!-- 返回按钮 回首页 -->
-	        <a href="javascript:;" id="back" v-on:click="back()">
-		        <img src="img/nav_back.png" class="back" >
+        <!-- 返回按钮 回首页 -->
+        <a href="javascript:;" id="back" onclick="javascript:history.back(-1);">
+	        <img src="img/nav_back.png" class="back" >
 
-		    	<img src="img/icon_back.png" >
-	    	</a>
-	        
-	        
-	    	<!-- 输入框 -->
-	    	<div class="seach">
-	    		<input type="" name="" placeholder="输入商家、分类、关键字" value="" id="seach_input">
+	    	<img src="img/icon_back.png" >
+    	</a>
+        
+        
+    	<!-- 输入框 -->
+    	<div class="seach">
+    		<input type="" name="" placeholder="输入商家、分类、关键字" value="" id="seach_input">
 
-	    		<img src="img/input_del_icon.png" id="delet" v-on:click="delet()">
-	    	</div>
-	    	
-            <!-- 到 搜索结果 -->
-            <a href="#seach_result/" v-on:click="click_seach()">
-	    	    <div class="seach_result">搜索</div>
-	    	</a>
+    		<img src="img/input_del_icon.png" id="delet" v-on:click="delet()">
+    	</div>
     	
-        </div>
-        
-        
-
-	</div>
+        <!-- 到 搜索结果 -->
+        <a href="#seach_result/" v-on:click="click_seach()">
+    	    <div class="seach_result">搜索</div>
+    	</a>
+	
+    </div>
+</div>
 </script>
 
 
 <!-- 模板七 搜索 结果 -->
 <script type="text/template" id="seach_result">
-	<div class="seach_result-page">
-		<div class="product_top">搜索结果
-        
-	        <!-- 返回上一层 -->
-		    <a href="#seach" id="">
-		    	<img src="img/nav_back.png" class="back" >
+<div class="seach_result-page">
+	<div class="product_top">搜索结果
+    
+        <!-- 返回上一层 -->
+	    <a href="#seach" id="" onclick="javascript:history.back(-1);">
+	    	<img src="img/nav_back.png" class="back" >
 
-			    <img src="img/nav_icon.png" class="logo" >
-		    </a>
-	    </div>
+		    <img src="img/nav_icon.png" class="logo" >
+	    </a>
+    </div>
 
 
 
-		<div class="now_bg">
-		    <span class="now">当前搜索</span>
-			<li v-for="itm in keyword">
-				<span v-bind:src="">{{itm.txt}}</span>
-			</li>
-		</div>
-
-        <!-- 搜索结果 商品列表  去往商品详情-->
-        <div class="all">
-			<li v-for="itm in seach_data.items" v-on:click="click_seach_Index(itm.id)">
-			    <a href="#/product/{{itm.id}}">
-					<img v-bind:src="'http://juhuituan.boguyuan.com/juhuituan'+itm.img">
-				</a>
-			</li>
-		</div>
-
+	<div class="now_bg">
+	    <span class="now">当前搜索</span>
+		<li v-for="itm in keyword">
+			<span v-bind:src="">{{itm.txt}}</span>
+		</li>
 	</div>
+
+    <!-- 搜索结果 商品列表  去往商品详情-->
+    <div class="all">
+		<li v-for="itm in seach_data.items" v-on:click="click_seach_Index(itm.id)">
+		    <a href="#/product/{{itm.id}}">
+				<img v-bind:src="'http://juhuituan.boguyuan.com/juhuituan'+itm.img">
+			</a>
+		</li>
+	</div>
+
+</div>
 </script>
+
+<!-- // 模板五 生成订单 从图文、商品详情 来到  生成订单-->
+<script type="text/template" id="order_form">
+<div class="order_form-page">
+    
+	<div class="order_form_top">
+	生成订单
+	
+    
+        <!-- 返回上一层 -->
+	    <a href="javascript:;" id="back"  onclick="javascript:history.back(-1);">
+	    	<img src="img/nav_back.png" class="back" >
+
+		    <img src="img/nav_icon.png" class="logo" >
+	    </a>
+    
+	</div>
+
+	
+    <!-- 订单信息 -->
+    <div class="indent">
+        <!-- <li >
+        	<span></span>
+			<span></span>
+        </li> -->
+
+    	<ul class="list_sell" v-for="itm in order_form">
+			<li class="project">
+    			<span>项目</span>
+    			<span>{{itm.orti}}</span>
+			</li>
+
+			<li>
+    			<span>单价</span>
+    			￥{{itm.pfri}}
+			</li>
+
+			<li class="num">
+    			<span>数量</span>
+                
+                <div>
+                    <!-- 减 -->
+                    <img src="img/reduce_normal.png" class="reduce" v-on:click="reduce()"> 
+
+                    <input type="" name="" value="1" disabled="disabled" class="number">
+
+                    <img src="img/add_normal.png" class="add" v-on:click="add()">
+                    <!-- 加 -->
+                </div>
+
+
+
+			</li>
+
+			<li class="total_price">
+    			<span>总价</span>
+    			￥<span class="t_price">{{itm.all}}</span>
+			</li>
+
+		</ul>
+    </div>
+
+    <!-- <div class="tel">您的手机号</div>
+
+    <div class="tels">
+    	<div class="tel_input">
+    		
+    	</div>
+    	<div class="bind">绑定新手机号</div>
+    </div> -->
+
+    <!-- 项目 单价 数量 总价 -->
+    <a href="#payment" v-on:click="go_pay(order_form[0].orti,order_form[0].pfri,order_form[0].num,order_form[0].all)">
+	    <div class="submit">提交订单</div>
+    </a>
+</div>
+</script>
+
+<!-- 模板八 确认订单 支付-->
+<script type="text/template" id="payment">
+<div class="payment-page">
+	<div class="payment_top">确认支付
+    
+        <!-- 返回上一层 -->
+	    <a href="#order_form" id="" onclick="javascript:history.back(-1);">
+	    	<img src="img/nav_back.png" class="back" >
+
+		    <img src="img/nav_icon.png" class="logo" >
+	    </a>
+    </div>
+
+    <div class="pay_content">
+
+    	<ul  v-for="itm in pay_for">
+	        <li class="xmu">
+	            <span>项目</span>
+		        <span>{{itm.p_ti}}</span>
+		    </li>
+	        <li >
+	            <span>单价</span>
+		        <span>￥{{itm.p_pfi}}</span>
+		    </li>
+	        <li >
+	            <span>数量</span>
+		        <span>{{itm.p_num}}</span>
+		    </li>
+	        <li >
+	            <span>总价</span>
+		        <span style="color: red;">￥{{itm.p_all}}</span>
+		    </li>
+	    </ul>
+
+    </div>
+
+
+    <div class="pay">支付方式</div>
+    <div class="pay_way">
+    	<li>支付宝</li>
+    	<li>银联</li>
+    </div>
+
+    
+
+    <div class="submit" >确认支付</div>
+
+</div>
+</script>
+
+<!-- 模板九 更多分类-->
+<script type="text/template" id="more">
+<div class="more-page">
+    <div class="more_top">
+	    更多
+	
+    
+        <!-- 返回上一层 -->
+	    <a href="#home" id="back" ">
+	    	<img src="img/nav_back.png" class="back" >
+
+		    <img src="img/nav_icon.png" class="logo" >
+	    </a>
+	</div>
+
+	<div class="more_cont">
+		<li v-for="itm in all.items">
+			<img v-bind:src="'http://juhuituan.boguyuan.com/juhuituan' +itm.img" align="center" >
+			
+			<span>{{itm.ti}} ({{itm.tnum}}) </span>
+			<!-- <span>线</span> -->
+			<div class="con_news">
+			    <!-- <span>test</span> -->
+
+				<div v-for="itm in sub_all.items">
+                    <!-- // 小类              数量 -->
+                    <span>{{itm.id}} {{itm.ti}} ({{itm.tnum}})</span>
+                </div>
+			</div>
+		</li>
+	</div>
+
+</div>
+</script>
+
 
 
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
