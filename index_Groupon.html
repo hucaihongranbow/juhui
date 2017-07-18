@@ -193,7 +193,7 @@
 		    	<li class="all_sort">
 		    		<div  v-on:click="toggle_sort" class="sort_bg">
 	    	        	<img src="img/sort.png">
-	    		        <span class="ti">默认分类</span>
+	    		        <span class="ti">默认排序</span>
 	    	        </div>
                     
                     
@@ -245,10 +245,10 @@
 	    <!-- 排序 -->
 	    <div class="sort_way">
         	<ul>
-	        	<li>默认排序</li>
-	        	<li>销量最高</li>
-	        	<li>价格最低</li>
-	        	<li>价格最高</li>
+	        	<li v-for="item in types" v-on:click="sortBy(item.way,res)">
+	        		<span>{{item.value}}</span>
+	        	</li>
+	        	
 
             </ul>
         </div>
