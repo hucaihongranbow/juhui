@@ -220,7 +220,16 @@
 			    sub_all:"",
                 
                 // 左 一级 顶部
-			    top_img:"img/all_cate_pressed.png"
+			    top_img:"img/all_cate_pressed.png",
+
+
+			    // 右 分类排序
+			    types: [
+					{value: '默认排序', way: 'default'},
+					{value: '销量最高', way: 'sales'},
+					{value: '价格最低', way: 'price_low'},
+					{value: '价格最高', way: 'price_hight'}
+			    ]
 
 			};
 		},
@@ -240,7 +249,7 @@
 					var d1 = xhr.responseText;
 					// console.log("d1");
 					var d2 = JSON.parse(d1).data;
-					// console.log(d2);
+					console.log(d2);
 
 					that.adlist = d2;
                     
@@ -275,7 +284,7 @@
 					var d1 = news.responseText;
 					// console.log("d1");
 					var d2 = JSON.parse(d1).data;
-					console.log(d2);
+					// console.log(d2);
                     
                   
 					that.all = d2;
@@ -387,10 +396,37 @@
                 }); 
 			},
 
-			// 右 排序
+			// 右 开关
 			toggle_sort(){
 				$('.sort_way').toggle();
+			},
+
+			// 排序
+			// 点击排序按钮，对list排序
+			// price sales evaluate 这三个属性，是list列表中每个成员对象中属性，
+			//所以我们可以根据该属性对列表成员排序
+			sortBy(key_way)
+			{
+				    // 商品列表展示
+				this.adlist.items.sort(function (a,b) 
+				{  
+					// a ,b 表示list数组中成员，所以该成员句该key属性
+					if (key_way==="price_hight") 
+					{   
+						// 用原价减去售价排序
+						return  (b.pri - b.fpri) - (a.pri - a.fpri);
+					}
+					else{
+						// 由小到大排序
+						// return a[key] - b[key]
+						// 由大到小排序
+						return b[key_way] - a[key_way]
+					}
+					
+				})
 			}
+
+
 
 
 
